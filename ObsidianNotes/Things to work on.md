@@ -1,0 +1,31 @@
+- [ ] **Cutscene manager** - *would be quite helpful to research how this is implemented in other games*
+	- [ ] Should store the dialogue in like a CSV file or database or something
+		- [ ] For each paragraph, we should have:
+			- Something to note when the dialogue is triggered
+			- Which conversation it is a part of
+			- The name of the character speaking
+			- The sprite of the character speaking
+	- [ ] I want a typing effect as the characters speak like in other sprite games
+- [ ] **Active weapon slot**
+	- [ ] How to actually store it and bind its actions to a button shouldn't be hard to figure out?
+- [ ] Actually creating a choice of weapons and consumables
+	- [ ] ![[Buffs]]
+	- [ ] ![[Player]]
+- [ ] **Locking the player in a room whenever a boss is active and alive**
+	- [ ] Tracking the boss' health and opening the triggers to doors when their health is 0
+- [ ] **Implementing save states in the game**
+	- [ ] What must be known at any given time to save the game in a meaningful way?
+		- [ ] Player health
+		- [ ] Player's inventory of items
+		- [ ] The number of waves survived
+		- [ ] Items in opened chests
+			- [ ] We don't care about what's in unopened chests - their contents can be generated at runtime
+		- [ ] Player position in dungeon
+		- [ ] Dungeon layout
+- [ ] Chests
+	- [ ] Storing items within them permanently may become a key mechanic of the game
+	- [ ] This relies on how I can store the procedurally generated dungeon in memory without causing lag
+		- [ ] Figure out how to permanently store this data of dungeon
+			- [ ] Can be used to reload the game
+- [ ] Implementing an input buffer - **not totally necessary but a huge ease-of-life improvement**
+- [ ] 
