@@ -50,3 +50,13 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q)) Debug.Log("This is where we would use the effect of this item - (e.g damage, healing etc)");
     }
 }
+
+// Example Data Structure (using C# syntax)
+[System.Serializable] // For easy serialization to JSON/binary
+public class ChestData
+{
+    public string ChestID;
+    //Each chest in theory stores a 4x4 grid of items
+    public LootableItem[] inventoryItems = new LootableItem[16];
+}
+

@@ -6,6 +6,7 @@
 			- The name of the character speaking
 			- The sprite of the character speaking
 	- [ ] I want a typing effect as the characters speak like in other sprite games
+		- [ ] ![[Drawing 2025-12-16 18.43.17.excalidraw]]
 - [ ] **Active weapon slot**
 	- [ ] How to actually store it and bind its actions to a button shouldn't be hard to figure out?
 - [ ] Actually creating a choice of weapons and consumables
@@ -24,8 +25,9 @@
 		- [ ] Dungeon layout
 - [ ] Chests
 	- [ ] Storing items within them permanently may become a key mechanic of the game
+	- [ ] ![[Inventory system planning]]
 	- [ ] This relies on how I can store the procedurally generated dungeon in memory without causing lag
 		- [ ] Figure out how to permanently store this data of dungeon
 			- [ ] Can be used to reload the game
-- [ ] Implementing an input buffer - **not totally necessary but a huge ease-of-life improvement**
+- [x] Implementing an input buffer - **not totally necessary but a huge ease-of-life improvement**
 - [ ] 
