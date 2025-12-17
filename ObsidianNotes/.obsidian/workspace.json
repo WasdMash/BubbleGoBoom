@@ -35,7 +35,8 @@
               "title": "Inventory system planning"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -92,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "0cf9b6c0b3b2de29",
@@ -179,7 +181,7 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "f11b905c094a3bc9",
+  "active": "9db3fc53107e1d39",
   "lastOpenFiles": [
     "Inventory system planning.md",
     "Things to work on.md",

@@ -64,6 +64,10 @@ public class HealthManager : MonoBehaviour
         UIChecks();
     }
 
+    //Getters and setters, baby for encapsulation
+    public int GetPlayerHealth() {return playerHealth;}
+    public void SetPlayerHealth(int newHealth) {playerHealth = newHealth;}
+
     public void HealPlayer(int manna)
     {
         if (playerHealth < (maxPlayerHealth - manna)) playerHealth += manna;

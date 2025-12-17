@@ -32,6 +32,15 @@ public class Inventory : MonoBehaviour
         else return; //If our inventory is full, then we won't equip any more items
     }
 
+    public void ReloadInventory(LootableItem[4] storedInventory)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            //Only replace the items which aren't the same
+            if(inventoryItems[i].CompareTo(storedInventory[i]) != 0) inventoryItems[i] = storedInventory[i];
+        }
+    }
+
     public void DiscardItem(int itemIndex)
     {
         if (storedItems > 0)

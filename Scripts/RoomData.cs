@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class RoomData : MonoBehaviour
 {
     [Header("Door trigger booleans")]

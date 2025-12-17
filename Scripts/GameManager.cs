@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public int gameScore = 1;
+    [SerializeField] int gameScore = 1;
 
     [Header("Managed scripts")]
     [SerializeField] AudioManager audioManager;
@@ -144,6 +144,8 @@ public class GameManager : MonoBehaviour
     public void EndGame(){
         // Debug.Log("You lost the game bro, fr");
         scoreText.text = "Final score: " + gameScore.ToString();
+        //I want the user to watch as I completely empty their inventory upon death
+            //MAKE THEM SUFFER
         Invoke("ResetGame", 5f); //reset the game after 5 second if there isn't any user input, i guess
     }
 
@@ -164,4 +166,7 @@ public class GameManager : MonoBehaviour
     public void ChangeScore(int amount){
         gameScore += amount;
     }
+
+    public int GetGameScore() {return gameScore;}
+    public void SetGameScore(int newScore) {gameScore = newScore;}
 }

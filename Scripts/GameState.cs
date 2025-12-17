@@ -12,6 +12,20 @@ public class GameState
  
     public const string PlayerPrefsKeyName = "SavedGameState";
 
+    //Constructor of the GameState class
+        //If this object fails to serialise, it could be due to issues of having Animation and other non-pure classes
+        //in LootableItem class
+    public GameState(int health, int score, Vector2 location, LootableItem[] inventory)
+    {
+        playerHealth = health;
+        currentScore = score;
+        currentPlayerLocation = location;
+        //Copying the values of the inventory over to the game state
+        for(int i = 0; i < 4; i++)
+        {
+            inventoryItems[i] = inventory[i];
+        }
+    }
     public void SaveToPlayerPrefs()
     {
         // Convert this GameState instance to a JSON string
