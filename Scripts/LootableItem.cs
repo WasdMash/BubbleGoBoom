@@ -15,7 +15,7 @@ public class LootableItem : IComparable<LootableItem>
     [Header("Visible things")]
     public Animation anim;
     public Sprite itemSprite;
-    public ParticleSystem particles;
+    public ParticleSystem particles; //I assume that this is a particle effect to be displayed when this item's trigger has been entered
     
     // Implement the IComparable<T> interface
     public int CompareTo(LootableItem other)

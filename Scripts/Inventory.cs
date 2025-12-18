@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
@@ -65,7 +67,21 @@ public class Inventory : MonoBehaviour
 public class ChestData
 {
     public string ChestID;
+    public bool opened = false; //We need to keep tracked of this so that we only save the inventories of opened chests
     //Each chest in theory stores a 4x4 grid of items
     public LootableItem[] inventoryItems = new LootableItem[16];
+
+    //Might need a function in here to randomly generate chest contents upon opening
+    public void generateContents()
+    {
+        LootableItem[] itemsToChooseFrom = GameManager.GetPossibleItems();
+        for(int i = 0; i < 16; i++)
+        {
+            //Randomly selecting an item
+                //If I want to implement rarity, I'll need to change this function by implementing a probability distribution
+                    //Kinda like I did for enemy drops in EnemyHealth
+            inventoryItems[i] = Random.GetItems(itemsToChooseFrom, 1).First();
+        }
+    }
 }
 

@@ -9,14 +9,15 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    [Header("Variables to manage")]
+    [SerializeField] static LootableItem[] possibleItemsToDrop;
     [SerializeField] int gameScore = 1;
+    [SerializeField] int waves = 0;
 
     [Header("Managed scripts")]
     [SerializeField] AudioManager audioManager;
     [SerializeField] AudioClip[] songs;
     [SerializeField] HealthManager health;
-
-
 
     [Header("Dynamic wave spawning around the player")]
     [SerializeField]    Transform player;
@@ -25,9 +26,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] int maxDist;
     [SerializeField] BoxCollider2D spawnBoundBox;
 
-
-
-
     [Header("Enemy prefabs")]
     [SerializeField] GameObject Suicider;
     [SerializeField] GameObject RegularGoon;
@@ -35,20 +33,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Mitosis;
     [SerializeField] GameObject KingOlay;
 
-
-
-
     [Header("General UI")]
     [SerializeField] TMP_Text scoreText, wavesSurived;
 
-    public int waves = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         audioManager = FindObjectOfType<AudioManager>();
         health = GetComponent<HealthManager>();
-
         waves = 0;
         StartCoroutine(SpawnWave());
     }
@@ -69,10 +62,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void BossWave(){
-        SpawnEmenies(1, waves, true);
-    }
-    // Update is called once per frame
+    void BossWave(){SpawnEmenies(1, waves, true);}
 
     void SpawnEmenies(int number, int waves, bool isBoss = false){
         if(isBoss == false){
@@ -87,7 +77,6 @@ public class GameManager : MonoBehaviour
             int maxChance = 100;
 
             int randomNum = UnityEngine.Random.Range(minChance, maxChance);
-
 
             if(randomNum < 50){
                 enemy = RegularGoon;
@@ -124,8 +113,9 @@ public class GameManager : MonoBehaviour
                 }
             }
             if(!validSpawn){
-                Debug.LogError("Couldn't find a valid position to spawn the boss in the alloted number of attempts");
+                Debug.LogError("Couldn't find a valid position to spawn the boss in the allotted number of attempts");
             } else {
+                //When we have more than one boss, insert boss prefab here
                 Instantiate(KingOlay, randomPosition, Quaternion.identity);
             }
         }
@@ -136,10 +126,7 @@ public class GameManager : MonoBehaviour
         wavesSurived.text = "Waves survived: " + waves.ToString();
     }
 
-    public void StartGoCoroutine(){
-        StartCoroutine(SpawnWave());
-    }
-
+    public void StartGoCoroutine(){ StartCoroutine(SpawnWave()); }
 
     public void EndGame(){
         // Debug.Log("You lost the game bro, fr");
@@ -163,10 +150,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void ChangeScore(int amount){
-        gameScore += amount;
-    }
+    public void ChangeScore(int amount){ gameScore += amount; }
 
     public int GetGameScore() {return gameScore;}
     public void SetGameScore(int newScore) {gameScore = newScore;}
+
+    public LootableItem[] GetPossibleItems() {return possibleItemsToDrop;}
 }

@@ -7,15 +7,21 @@ public class GameState
 {
     public int playerHealth;
     public int currentScore;
+    //It has been advised to save Vector2s as a float[2] for easier serialisation
+        //I'll do that iff I'm having any issues
     public Vector2 currentPlayerLocation;
     public LootableItem[4] inventoryItems;
+    //We be saving everything at once, baby!
+    public List<RoomData> rooms;
+    public List<EnemyHealth> enemies;
+    List<ChestData> chests;
  
     public const string PlayerPrefsKeyName = "SavedGameState";
 
     //Constructor of the GameState class
         //If this object fails to serialise, it could be due to issues of having Animation and other non-pure classes
         //in LootableItem class
-    public GameState(int health, int score, Vector2 location, LootableItem[] inventory)
+    public GameState(int health, int score, Vector2 location, LootableItem[] inventory, List<RoomData> rooms, List<EnemyHealth> enemies, List<ChestData> chests)
     {
         playerHealth = health;
         currentScore = score;
@@ -25,27 +31,8 @@ public class GameState
         {
             inventoryItems[i] = inventory[i];
         }
-    }
-    public void SaveToPlayerPrefs()
-    {
-        // Convert this GameState instance to a JSON string
-        string json = JsonUtility.ToJson(this);
-
-        // Save the converted JSON into the PlayerPrefs
-        PlayerPrefs.SetString(PlayerPrefsKeyName, json);
-        PlayerPrefs.Save();
-    }
-
-    public static GameState CreateFromPlayerPrefs()
-    {
-        // If the game was never saved before, the key will not exist; in this case return null
-        if(!PlayerPrefs.HasKey(PlayerPrefsKeyName))
-            return null;
-
-        // Retrieve the saved JSON string from the player prefs
-        string json = PlayerPrefs.GetString(PlayerPrefsKeyName);
-
-        // Deserialize the JSON string into a new GameState object and return it
-        return JsonUtility.FromJson<GameState>(json);           
+        this.rooms = rooms;
+        this.enemies = enemies;
+        this.chests = chests;
     }
 }

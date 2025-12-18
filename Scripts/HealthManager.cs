@@ -81,9 +81,10 @@ public class HealthManager : MonoBehaviour
 
     }
     
+    //Check if this actually works - I don't recall seeing this in action
     IEnumerator ChangeColor(){
         spriteRenderer.color = damageColor;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.4f);
         spriteRenderer.color = noDamageColor;
     }
 }

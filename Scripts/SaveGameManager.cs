@@ -1,6 +1,4 @@
-using System;
 using System.IO;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Variables")]
+    //Should be able to alter the name slightly to store data for multiple savestates at some point
     const string FILE_NAME = "savestate.json";
     GameState currentGameState;
         //Depending on how I implement things, this JSON file may need sections
@@ -35,6 +34,7 @@ public class GameManager : MonoBehaviour
     
     List<GameObject> rooms;
     List<EnemyMovement> enemies;
+    List<ChestData> chests;
 
     void Start()
     {
@@ -50,8 +50,9 @@ public class GameManager : MonoBehaviour
         playerLocation = FindObjectOfType<PlayerMovement>().gameObject.transform;
         playerInventory = FindObjectOfType<Inventory>();
 
-        rooms = FindObjectsOfTag("Room"); //Double-check that I've correctly spelt the tags for these
-        enemies = FindObjectsOfType<EnemyMovement>(); //Assmes that all enemies have the same script attached to them
+        rooms = FindObjectsOfType(RoomData); //Double-check that I've correctly spelt the tags for these
+        enemies = FindObjectsOfType<EnemyHealth>(); //Assmes that all enemies have the same script attached to them
+        chests = FindObjectsOType<ChestData>();
         //Now that I have these items in a room, I need to serialise information about them
         /*
         Namely,
@@ -61,29 +62,61 @@ public class GameManager : MonoBehaviour
                 Makes it much easier than trying to save multiple copies of the same image
         */
 
-        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation.position, playerInventory);
-        //Now, time to save this in PlayerPrefs, because, why not? Life can be easy sometimes
-        currentGameState.SaveToPlayerPrefs(); //This should save our player info in PlayerPrefs - most important to hide
+        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation.position, playerInventory, rooms, enemies, chests);
 
-        //Now, it's time to save everything else
+        string json = JsonUtility.ToJson(currentGameState);
+        //Will need to adjust file nme in case I want a save file for each user of the game/ each save state
+        string path = path.Combine(Application.persistentDataPath, FILE_NAME);
+        FILE_NAME.WriteAllText(path, json);
+
     }
 
     public void LoadState()
     {
         //Loading our player's vital info from PlayerPrefs into our current game state
-        currentGameState = GameState.CreateFromPlayerPrefs();
-        //Appropiate assigning these values to the player
-        health.SetPlayerHealth(currentGameState.playerHealth);
-        game.SetGameScore(currentGameState.currentScore);
-        playerLocation = FindObjectOfType<PlayerMovement>().gameObject.transform;
-        playerInventory = FindObjectOfType<Inventory>();
+        string path = path.Combine(Application.persistentDataPath, FILE_NAME);
 
-        playerLocation.position = currentGameState.currentPlayerLocation;
-        playerInventory.ReloadInventory(currentGameState.inventoryItems);
-
-        if (File.Exists(FILE_NAME))
+        if (File.Exists(path))
         {
             //Convert this thing into a GameState and then load its variables into the game, baby
+                //Don't forget to decrypt it, so we can actually understand it
+            string jsonString = File.ReadAllText(path);
+            GameState loadedData = JsonUtility.FromJson<GameState>(jsonString);
+
+            //Loading in the appropiate data values
+            health.SetPlayerHealth(currentGameState.playerHealth);
+            game.SetGameScore(currentGameState.currentScore);
+            playerLocation = FindObjectOfType<PlayerMovement>().gameObject.transform;
+            playerInventory = FindObjectOfType<Inventory>();
+
+            playerLocation.position = currentGameState.currentPlayerLocation;
+            playerInventory.ReloadInventory(currentGameState.inventoryItems);
+
+            //Will need to instantiate the rooms and enemies in their correct positions
+            foreach(RoomData room in currentGameState.rooms)
+            {
+                //Search through possible room types to find the same room type as stored
+                //Instantiate a copy of that room in the right location
+                //Manually assign its RoomData values from room to restore the room fully to its proper form
+            }
+
+            foreach(EnemyHealth enemy in currentGameState.enemies)
+            {
+                //Ignore the health - I want to punish users for logging out by resetting health
+                    //Can be set here though in case they really complain about this feature
+                //Set the enemy type and position
+                    //Might have to search through possible enemy types and instantiate an enemy with a matching name
+                //Do that and we should be good to go
+            }
+            foreach(ChestData chest in chests)
+            {
+                //The usual
+                    //Instantiate a chest object in its correct position
+                //Check if it has been opened
+                    //If it has, fetch its previous contents and re-generate those
+                    //If not, ignore this step
+            }
+
         }
     }
 }

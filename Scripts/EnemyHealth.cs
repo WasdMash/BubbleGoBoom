@@ -8,6 +8,7 @@ public class EnemyHealth : MonoBehaviour
 {
 
     [SerializeField] float health;
+    [SerializeField] Vector3 position;
     [SerializeField] int scoreValue;
     SpriteRenderer spriteRenderer;
     [SerializeField] Color damageColor = Color.red;
@@ -33,14 +34,13 @@ public class EnemyHealth : MonoBehaviour
 
         for(int i=0; i<pickUpRates.Length; i++){
             //Keep going up until we find the first probability greater than our value
-            if(pickUpRates[i] <= dropRate){
+            if(pickUpRates[i] >= dropRate){
                 //Then this is the item which we shall return to be dropped
                 return itemsToDrop[i];
             }
         }
-
-        //Returns something if the for loop fails
-        return itemsToDrop[0];
+        //Lol, you get nothing
+        return null;
     }
 
     Coroutine changeColorCoroutine;
@@ -63,6 +63,10 @@ public class EnemyHealth : MonoBehaviour
         }
 
     }
+
+    //Updating position so we can 
+    void Update(){ position = transform.position;}
+    public Vector3 GetPosiiton(){return position;}
 
 
     public void Damage(float damage){
