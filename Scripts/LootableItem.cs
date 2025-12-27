@@ -6,16 +6,12 @@
 public class LootableItem : IComparable<LootableItem>
 {
     [Header("Item properties")]
-    public string ItemID;
-    public string itemName;
-    public int itemDamage;
-    public int maxDurability;
-    public int durability; //This durability can be altered on instances when it is used over time
+    [SerializeField] protected string itemName;
 
     [Header("Visible things")]
-    public Animation anim;
-    public Sprite itemSprite;
-    public ParticleSystem particles; //I assume that this is a particle effect to be displayed when this item's trigger has been entered
+    [SerializeField] protected Animation anim;
+    [SerializeField] protected Sprite itemSprite;
+    [SerializeField] protected ParticleSystem particles; //I assume that this is a particle effect to be displayed when this item's trigger has been entered
     
     // Implement the IComparable<T> interface
     public int CompareTo(LootableItem other)
@@ -31,6 +27,15 @@ public class LootableItem : IComparable<LootableItem>
         }
 
         //If the maxDurability is the same, then surely these should be similar objects, if not the same
-        return this.itemName.CompareTo(other.itemName);
+        return this.itemName.CompareTo(other.getName());
     }
+
+    public Sprite getSprite() {return itemSprite;}
+    public string getName() {return itemName;}
+
+    //The stuff which should happen when this particle gets picked up
+    public void pickedUpParticles(){ particles.Play();}
+
+    //Probably should try to add an OnTriggerEnter2D() function to trigger the pickup
+        //This would also be common between all items who inherit this interface
 }

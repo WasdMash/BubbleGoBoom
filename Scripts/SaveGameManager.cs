@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     GameManager game;
     Transform2D playerLocation;
     Inventory playerInventory;
+    int[4] playerInventoryStack;
     //I should probably save the layout of the dungeon as well
         //To keep the fear factor up, storing the position of each enemy will be necessary
             //To punish pauses, I will reset enemy health upon reloading (less stuff for me to save so yay!)
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
         playerInventory = FindObjectOfType<Inventory>();
 
         rooms = FindObjectsOfType(RoomData); //Double-check that I've correctly spelt the tags for these
-        enemies = FindObjectsOfType<EnemyHealth>(); //Assmes that all enemies have the same script attached to them
+        enemies = FindObjectsOfType<EnemyHealth>(); //Assumes that all enemies have the same script attached to them
         chests = FindObjectsOType<ChestData>();
         //Now that I have these items in a room, I need to serialise information about them
         /*
@@ -84,23 +85,32 @@ public class GameManager : MonoBehaviour
             GameState loadedData = JsonUtility.FromJson<GameState>(jsonString);
 
             //Loading in the appropiate data values
-            health.SetPlayerHealth(currentGameState.playerHealth);
-            game.SetGameScore(currentGameState.currentScore);
+            health.SetPlayerHealth(loadedData.playerHealth);
+            game.SetGameScore(loadedData.currentScore);
             playerLocation = FindObjectOfType<PlayerMovement>().gameObject.transform;
             playerInventory = FindObjectOfType<Inventory>();
 
-            playerLocation.position = currentGameState.currentPlayerLocation;
-            playerInventory.ReloadInventory(currentGameState.inventoryItems);
+            playerLocation.position = loadedData.currentPlayerLocation;
+            playerInventory.ReloadInventory(ref loadedData.inventory);
 
             //Will need to instantiate the rooms and enemies in their correct positions
-            foreach(RoomData room in currentGameState.rooms)
+            foreach(RoomData room in loadedData.rooms)
             {
                 //Search through possible room types to find the same room type as stored
-                //Instantiate a copy of that room in the right location
-                //Manually assign its RoomData values from room to restore the room fully to its proper form
+                foreach(GameObject possibleRoom in ProceduralGeneration.roomPrefabs)
+                {
+                    if(string.Equals(room.name, possibleRoom.name))
+                    {
+                        //Cool, we've found the room type that we want to instantiate
+                        Instantiate(possibleRoom, room.position, selectedRoom.transform.rotation);
+                        //Manually assign its RoomData values from room to restore the room fully to its proper form
+                        RoomData newRoom = possibleRoom.GetComponent<RoomData>();
+                        newRoom.CopyData(ref room);//Copying the values over so nothing is lost
+                    }
+                }
             }
 
-            foreach(EnemyHealth enemy in currentGameState.enemies)
+            foreach(EnemyHealth enemy in loadedData.enemies)
             {
                 //Ignore the health - I want to punish users for logging out by resetting health
                     //Can be set here though in case they really complain about this feature

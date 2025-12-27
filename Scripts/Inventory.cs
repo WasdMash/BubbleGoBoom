@@ -6,40 +6,57 @@ using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
-
     [Header("Items")]
     public LootableItem[] inventoryItems = new LootableItem[4]; //This is the array holding my current items of usage
+    public int[] inventoryStacks = new int[4]; //Consumables can be stacked but not weapons - I'm not storing the durability of multiple swords
     public LootableItem equippedItem; //We probably only want our user to have one item at a time to add to the chaos
-    int storedItems = 0; //This will store the index of the last item we have - basically a counter of how many items we have in our inventory
+    [SerialiseField] int storedItems = 0; //This will store the index of the last item we have - basically a counter of how many items we have in our inventory
 
     [Header("Graphics")]
     public Sprite[] inventoryGraphics = new Sprite[4];//default placeholder for now
     public Sprite nullSprite; //This is the placeholder sprite for each inventory slot, just to prevent errors
     //I want a visual Minecraft-like box to show current inventory
 
-    public void Start()
-    {
-        //Setting the default sprite across the inventory slot
-        for (int i = 0; i < inventoryGraphics.Length; i++) inventoryGraphics[i] = nullSprite;
-        equippedItem = inventoryItems[0]; //By default, our equipped item should be the first item in our inventory
-    }
+    //I should probably bind a button to run EquipItem() and another to use its features
 
-    public void EquipItem(LootableItem pickUpItem)
+    public void PickUpItem(LootableItem pickUpItem)
     {
+        //First check if the item already exists - if it does, stack it
+        for(int i = 0; i < storedItems; i++)
+        {
+            if(inventoryItems[i].CompareTo(pickUpItem) != 0)
+            {
+                //Should probably check if the lootableItem is a weapon
+                //We should break the for loop if it is
+                inventoryStacks[i]++; //Only if pickUpItem is not a weapon
+                return; //Our job is done - we don't need 2 slots taken up by the same item
+            }
+        }
         if (storedItems < 3)
         {
             inventoryItems[storedItems] = pickUpItem;//Add this item to our inventory slot
-            inventoryGraphics[storedItems++] = pickUpItem.itemSprite; //Assigning the sprite of this item to the inventory bar on UI
+            inventoryGraphics[storedItems++] = pickUpItem.getSprite(); //Assigning the sprite of this item to the inventory bar on UI
+            //Automatically set the new item to be our equipped item
+            equippedItem = inventoryItems[storedItems];
         }
         else return; //If our inventory is full, then we won't equip any more items
     }
 
-    public void ReloadInventory(LootableItem[4] storedInventory)
+    public void EquipItem(int itemIndex){ equippedItem = inventoryItems[itemIndex];}
+
+    public void ReloadInventory(ref Inventory storedInventory)
     {
+        equippedItem = storedInventory.equippedItem;
         for(int i = 0; i < 4; i++)
         {
             //Only replace the items which aren't the same
-            if(inventoryItems[i].CompareTo(storedInventory[i]) != 0) inventoryItems[i] = storedInventory[i];
+                //Ugh, I have to store the inventory stack also
+            if(inventoryItems[i].CompareTo(storedInventory.inventoryItems[i]) != 0)
+            {
+                inventoryItems[i] = storedInventory.inventoryItems[i];
+                //Handle that stack also
+                inventoryStacks[i] = storedInventory.inventoryStacks[i];
+            } 
         }
     }
 
@@ -47,9 +64,13 @@ public class Inventory : MonoBehaviour
     {
         if (storedItems > 0)
         {
-            inventoryItems[itemIndex] = null;//Remove this item this item to our inventory slot
+            if(inventoryStacks[itemIndex] > 0) inventoryStacks[itemIndex]--; //One less in the stack to worry about
+            else
+            {
+                inventoryItems[itemIndex] = null;//Remove this item this item to our inventory slot
             inventoryGraphics[itemIndex] = nullSprite; //Assigning the sprite of this item to the inventory bar on UI
             storedItems--;
+            }           
         }
         else return; //If our inventory is empty, then we won't discard any more items
     }
