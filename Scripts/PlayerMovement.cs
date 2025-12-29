@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player movement")]
     [Range(1.0f,100.0f)]
-    public float playerSpeed;
-    float userRight, userForward;
+    public float playerSpeed; //Annoyingly, the oil script uses this vaariable - will need to be properly encapsulated before release
     [SerializeField] Rigidbody2D rb;
     Animator anim;
     //bool running = false;
@@ -20,19 +20,15 @@ public class PlayerMovement : MonoBehaviour
     [Range(1f,5f)]
     [SerializeField] float dashCooldown;
     [SerializeField] float dashTimer;
-    [SerializeField] LayerMask projectileToAvoid; //all projectiles should be of this layermask - check in onCollisionEnter()
 
     [Header("Camera settings")]
-
-    [Range(0f, 20f)]
-    [SerializeField] float cursorDistance, maxCursorDistance;
     [Range(0f, 1f)]
     [SerializeField] float screenPercentage; //controls how tightly one can view their player on screen
     [SerializeField] Vector3 newCameraTarget;
     [SerializeField] float cameraSpeed;
     [SerializeField] Camera main_Camera;
     [SerializeField] float cameraWidth, cameraHeight;
-    [SerializeField] float offsetMultiplier;
+    [SerializeField] float offsetMultiplier = 0.9f;
 
     // Start is called before the first frame update
     void Start()
@@ -57,10 +53,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Read the processed input from the manager
+        Vector2 moveInput = InputManager.Instance.MovementInput;
+        Vector2 mousePos = InputManager.Instance.LookInput;
+
         //Get player movement
-        userRight = Input.GetAxis("Horizontal");
-        userForward = Input.GetAxis("Vertical");
-        anim.SetBool("run", (userRight!=0||userForward!=0));
+        anim.SetBool("run", moveInput.magnitude != 0);
         if(dashTimer > 0) dashTimer -= Time.deltaTime;
 
         //Implement player dash
@@ -75,19 +73,13 @@ public class PlayerMovement : MonoBehaviour
         // Calculate new camera target position
         Vector3 playerTransform = gameObject.transform.position;
 
-        // Get mouse position and screen details
-        Vector3 mousePos =Input.mousePosition;
-        float centerX = Screen.width / 2;
-        float centerY = Screen.height / 2;
-
-        // Treat x and y values as cartesian coordinates
-        float x = (mousePos.x - centerX) / (Screen.width / 2);
         //Flipping the sprite to face the direction it's facing
+        float x = (mousePos.x - (cameraWidth / 2))/(cameraWidth / 2);
+        float y = (mousePos.y - (cameraHeight / 2))/(cameraHeight / 2);
         if(x > 0) GetComponent<SpriteRenderer>().flipX = true;
         else GetComponent<SpriteRenderer>().flipX = false;
-        float y = (mousePos.y - centerY) / (Screen.height / 2);
 
-        // Determine offse amount
+        // Determine offset amount
         Vector3 offset = new Vector3(x, y, 0f) *  offsetMultiplier;
         offset.z = -1f;
 
@@ -100,8 +92,7 @@ public class PlayerMovement : MonoBehaviour
       
         // Update camera position using Lerp for smooth movement
         main_Camera.transform.position = Vector3.Lerp(main_Camera.transform.position, newCameraTarget, cameraSpeed * Time.deltaTime);
-
-        
+      
     }
 
     void FixedUpdate(){
@@ -110,6 +101,6 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = dashForce;
             isDashing = false;
         }
-        else rb.velocity = new Vector2(userRight*playerSpeed, userForward*playerSpeed);
+        else rb.velocity = InputManager.Instance.MovementInput * playerSpeed;
     } 
 }

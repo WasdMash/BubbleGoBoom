@@ -36,6 +36,7 @@ public class HealthManager : MonoBehaviour
     void Start()
     {
         game = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        spriteRenderer = FindObjectOfType<PlayerMovement>().gameObject.GetComponent<SpriteRenderer>();
         playerHealth = maxPlayerHealth;
         //Setting the default value of the healthbar
         healthBar.maxValue = maxPlayerHealth;

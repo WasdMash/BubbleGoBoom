@@ -1,9 +1,10 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
+using System.Linq;
 
-
-public class GameManager : MonoBehaviour
+public class SaveStateManager : MonoBehaviour
 {
     [Header("Variables")]
     //Should be able to alter the name slightly to store data for multiple savestates at some point
@@ -26,15 +27,15 @@ public class GameManager : MonoBehaviour
     [Header("Data sources")]
     HealthManager health;
     GameManager game;
-    Transform2D playerLocation;
+    Transform playerLocation;
     Inventory playerInventory;
-    int[4] playerInventoryStack;
+    int[] playerInventoryStack = new int[4];
     //I should probably save the layout of the dungeon as well
         //To keep the fear factor up, storing the position of each enemy will be necessary
             //To punish pauses, I will reset enemy health upon reloading (less stuff for me to save so yay!)
     
-    List<GameObject> rooms;
-    List<EnemyMovement> enemies;
+    List<RoomData> rooms;
+    List<EnemyHealth> enemies;
     List<ChestData> chests;
 
     void Start()
@@ -51,9 +52,11 @@ public class GameManager : MonoBehaviour
         playerLocation = FindObjectOfType<PlayerMovement>().gameObject.transform;
         playerInventory = FindObjectOfType<Inventory>();
 
-        rooms = FindObjectsOfType(RoomData); //Double-check that I've correctly spelt the tags for these
-        enemies = FindObjectsOfType<EnemyHealth>(); //Assumes that all enemies have the same script attached to them
-        chests = FindObjectsOType<ChestData>();
+        // Using FindObjectsSortMode.None is significantly faster in 2022.3.62f1+
+            //I don't really need the found objects to be sorted - I'm looping over them all anyways
+        rooms = new List<RoomData>(FindObjectsByType<RoomData>(FindObjectsSortMode.None));
+        enemies = new List<EnemyHealth>(FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None)); //Assumes that all enemies have the same script attached to them
+        chests = new List<ChestData>(FindObjectsOfType<ChestData>());
         //Now that I have these items in a room, I need to serialise information about them
         /*
         Namely,
@@ -67,15 +70,21 @@ public class GameManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(currentGameState);
         //Will need to adjust file nme in case I want a save file for each user of the game/ each save state
-        string path = path.Combine(Application.persistentDataPath, FILE_NAME);
-        FILE_NAME.WriteAllText(path, json);
+        string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
+        // Optional but recommended: ensure the folder exists
+        string directory = Path.GetDirectoryName(path);
+        if (!Directory.Exists(directory))
+        {
+            Directory.CreateDirectory(directory);
+        }
+        File.WriteAllText(path, json);
 
     }
 
     public void LoadState()
     {
         //Loading our player's vital info from PlayerPrefs into our current game state
-        string path = path.Combine(Application.persistentDataPath, FILE_NAME);
+        string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
 
         if (File.Exists(path))
         {
@@ -91,7 +100,7 @@ public class GameManager : MonoBehaviour
             playerInventory = FindObjectOfType<Inventory>();
 
             playerLocation.position = loadedData.currentPlayerLocation;
-            playerInventory.ReloadInventory(ref loadedData.inventory);
+            playerInventory = new Inventory(ref loadedData.inventory);
 
             //Will need to instantiate the rooms and enemies in their correct positions
             foreach(RoomData room in loadedData.rooms)
@@ -102,10 +111,10 @@ public class GameManager : MonoBehaviour
                     if(string.Equals(room.name, possibleRoom.name))
                     {
                         //Cool, we've found the room type that we want to instantiate
-                        Instantiate(possibleRoom, room.position, selectedRoom.transform.rotation);
+                        Instantiate(possibleRoom, room.position, possibleRoom.transform.rotation);
                         //Manually assign its RoomData values from room to restore the room fully to its proper form
                         RoomData newRoom = possibleRoom.GetComponent<RoomData>();
-                        newRoom.CopyData(ref room);//Copying the values over so nothing is lost
+                        newRoom = new RoomData(room); //Copying the values over so nothing is lost
                     }
                 }
             }

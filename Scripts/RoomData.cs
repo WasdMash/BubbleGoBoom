@@ -1,5 +1,7 @@
+using UnityEngine;
+
 [System.Serializable]
-public class RoomData
+public class RoomData: MonoBehaviour
 {
     [Header("Door trigger booleans")]
     public bool hasNorthDoor;
@@ -13,7 +15,8 @@ public class RoomData
     public bool bossInsideDefeated = true; //Only set to false if there actually is a boss inside
         //I'll use this boolean to determine when to lock the player inside of a room
 
-    public void CopyData(ref RoomData oldRoom)
+    //Yay! - we're using copy constructors!
+    public RoomData(RoomData oldRoom)
     {
         this.hasNorthDoor = oldRoom.hasNorthDoor;
         this.hasEastDoor = oldRoom.hasEastDoor;

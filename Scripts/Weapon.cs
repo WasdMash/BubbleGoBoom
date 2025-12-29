@@ -1,3 +1,6 @@
+using UnityEngine;
+using System;
+
 [System.Serializable]
 //Yay - using interfaces to check if two items are the same
     //Finna make my life so much easier in the long run
@@ -11,16 +14,17 @@ public class Weapon : LootableItem
     [SerializeField] protected int durability; //This durability can be altered on instances when it is used over time
     [SerializeField] protected Collider2D attackHitBox;
     
-    public virtual void Attack(int damageDone)
+    public override void useItem()
     {
         //Make an attacking motion and show necessary particles
             //Give it a collider or raycast within attacking range
             //Do set damage if we hit anything
+        Debug.Log(itemName + " is doing damage, baby!");
     }
 
     public virtual void WearDown(int damageTaken)
     {
         durability -= damageTaken;
-        if(durability <= 0) Destroy(this.gameObject);
+        if(durability <= 0) Debug.Log(itemName + " should have been destroyed. Find a way to do so");
     }
 }

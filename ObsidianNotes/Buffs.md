@@ -4,6 +4,8 @@
 		- Could show a dirt bar for shield
 		- Can implement a squeeze attack to release absorbed dirt in one direction and reset the dirt bar of the sponge
 - Mop - melee weapon
+	- Should be more effective in the slime world and less effective in the dirt world
+		- Leave this to the player to figure out
 - Disinfectant - shotgun-like weapon with short range
 - Listerine Molly - bomb-like item
 

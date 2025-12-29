@@ -27,10 +27,7 @@ public class GameState
         currentScore = score;
         currentPlayerLocation = location;
         //Copying the values of the inventory over to the game state
-        for(int i = 0; i < 4; i++)
-        {
-            inventoryItems[i] = inventory[i];
-        }
+        this.inventory = inventory;
         this.rooms = rooms;
         this.enemies = enemies;
         this.chests = chests;

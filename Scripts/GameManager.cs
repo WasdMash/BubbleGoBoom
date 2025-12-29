@@ -155,5 +155,5 @@ public class GameManager : MonoBehaviour
     public int GetGameScore() {return gameScore;}
     public void SetGameScore(int newScore) {gameScore = newScore;}
 
-    public LootableItem[] GetPossibleItems() {return possibleItemsToDrop;}
+    public static LootableItem[] GetPossibleItems() {return possibleItemsToDrop;}
 }

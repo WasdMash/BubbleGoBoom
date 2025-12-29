@@ -1,3 +1,6 @@
+using UnityEngine;
+using System;
+
 [System.Serializable]
 //Yay - using interfaces to check if two items are the same
     //Finna make my life so much easier in the long run
@@ -18,20 +21,18 @@ public class LootableItem : IComparable<LootableItem>
     {
         if (other == null) return 1;
 
-        // Sort primarily by value (descending), then by name (ascending)
+        // Sort primarily by name (ascending)
         // CompareTo returns <0 if the current instance is less than the other object
-        int valueComparison = other.value.CompareTo(this.maxDurability); // Invert for descending
-        if (valueComparison != 0)
-        {
-            return valueComparison;
-        }
-
-        //If the maxDurability is the same, then surely these should be similar objects, if not the same
         return this.itemName.CompareTo(other.getName());
     }
 
     public Sprite getSprite() {return itemSprite;}
     public string getName() {return itemName;}
+
+    public virtual void useItem()
+    {
+        Debug.Log(itemName + " has just been used");
+    }
 
     //The stuff which should happen when this particle gets picked up
     public void pickedUpParticles(){ particles.Play();}
