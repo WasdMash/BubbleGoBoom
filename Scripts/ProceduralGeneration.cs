@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ProceduralGeneration : MonoBehaviour
 {
-    public static readonly GameObject[] roomPrefabs; //This is the array we want to store the rooms which can be instantiated
+    [SerializeField] GameObject[] roomPrefabs; //This is the array we want to store the rooms which can be instantiated
     //These variables dictate the minimum and maximum number of rooms generated
     [Range(1,15)] [SerializeField] int minRooms;
     [Range(15, 100)] [SerializeField] int maxRooms = 15;

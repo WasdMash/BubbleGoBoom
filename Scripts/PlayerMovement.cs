@@ -55,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Read the processed input from the manager
         Vector2 moveInput = InputManager.Instance.MovementInput;
-        Vector2 mousePos = InputManager.Instance.LookInput;
+        //Vector2 mousePos = InputManager.Instance.LookInput;
+        Vector2 mousePos = Mouse.current.position.ReadValue();
 
         //Get player movement
         anim.SetBool("run", moveInput.magnitude != 0);
@@ -72,10 +73,12 @@ public class PlayerMovement : MonoBehaviour
         
         // Calculate new camera target position
         Vector3 playerTransform = gameObject.transform.position;
+        float centreX = Screen.width / 2;
+        float centreY = Screen.height / 2;
 
         //Flipping the sprite to face the direction it's facing
-        float x = (mousePos.x - (cameraWidth / 2))/(cameraWidth / 2);
-        float y = (mousePos.y - (cameraHeight / 2))/(cameraHeight / 2);
+        float x = (mousePos.x - centreX)/(Screen.width / 2);
+        float y = (mousePos.y - centreY)/(Screen.height / 2);
         if(x > 0) GetComponent<SpriteRenderer>().flipX = true;
         else GetComponent<SpriteRenderer>().flipX = false;
 

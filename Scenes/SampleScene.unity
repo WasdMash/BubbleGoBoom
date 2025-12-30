@@ -2270,31 +2270,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryItems:
-  - itemName: 
-    anim: {fileID: 0}
-    itemSprite: {fileID: 0}
-    particles: {fileID: 0}
-  - itemName: 
-    anim: {fileID: 0}
-    itemSprite: {fileID: 0}
-    particles: {fileID: 0}
-  - itemName: 
-    anim: {fileID: 0}
-    itemSprite: {fileID: 0}
-    particles: {fileID: 0}
-  - itemName: 
-    anim: {fileID: 0}
-    itemSprite: {fileID: 0}
-    particles: {fileID: 0}
-  inventoryStacks: 
-  equippedItem:
-    itemName: 
-    anim: {fileID: 0}
-    itemSprite: {fileID: 0}
-    particles: {fileID: 0}
+  - {fileID: 11400000, guid: 548a1f136fb6ac54cb96b63a09fd6299, type: 2}
+  - {fileID: 11400000, guid: e2d7f179c393c0d4a8d4f1de7932d5bc, type: 2}
+  - {fileID: 11400000, guid: d3ace9d97aeceea46bf663048ccee12e, type: 2}
+  - {fileID: 0}
+  inventoryStacks: 00000000000000000000000000000000
+  equippedItem: {fileID: 0}
   storedItems: 0
-  inventoryGraphics: []
-  nullSprite: {fileID: 0}
+  inventoryGraphics:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  nullSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &1599745194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2549,7 +2537,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854d3b2db8406ac4599e4afcaeb24f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRooms: 0
+  roomPrefabs:
+  - {fileID: 4071645005445587485, guid: 7b06af946182b61479ab56738710a8c9, type: 3}
+  - {fileID: 6379359864858102050, guid: cfe825b0dbf4f104ca5736caa054a173, type: 3}
+  - {fileID: 6379359864858102050, guid: 0667a5d5c9d8ea34a9202c9ec5922c82, type: 3}
+  - {fileID: 8792185193006526572, guid: 49cc58b1f10931b4d82b0aa5f3d1bb16, type: 3}
+  - {fileID: 8792185193006526572, guid: ca3f0ccdc57681e40958fa45baeb8bc1, type: 3}
+  minRooms: 1
   maxRooms: 15
   currentRoomCount: 0
 --- !u!1 &1644730344

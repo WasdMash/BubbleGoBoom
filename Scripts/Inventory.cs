@@ -17,6 +17,12 @@ public class Inventory : MonoBehaviour, IItemContainer
     public Sprite nullSprite; //This is the placeholder sprite for each inventory slot, just to prevent errors
     //I want a visual Minecraft-like box to show current inventory
 
+    public void Awake()
+    {
+        inventoryGraphics = GetComponentsInChildren<InventorySlot>();
+        RefreshUI();
+    }
+
     //A beautiful copy constructor yet again
     public Inventory(ref Inventory other){
         storedItems = other.storedItems;
@@ -31,7 +37,7 @@ public class Inventory : MonoBehaviour, IItemContainer
     }
     public LootableItem GetItem(int index) => inventoryItems[index];
 
-    public void EquipItem(LootableItem item)
+    public void PickUpItem(LootableItem item)
     {
         //First check if the item already exists - if it does, stack it
         for(int i = 0; i < storedItems; i++)
@@ -40,7 +46,7 @@ public class Inventory : MonoBehaviour, IItemContainer
             {
                 //Should probably check if the lootableItem is a weapon
                 //We should break the for loop if it is
-                if(inventoryItems[index] is not Weapon) inventoryStacks[i]++; //Only if pickUpItem is not a weapon
+                if(inventoryItems[i] is not Weapon) inventoryStacks[i]++; //Only if pickUpItem is not a weapon
                 return; //Our job is done - we don't need 2 slots taken up by the same item
             }
         }
@@ -48,7 +54,7 @@ public class Inventory : MonoBehaviour, IItemContainer
         {
             SetItem(storedItems, item); //Assign the item to the last available spot
             //Automatically set the new item to be our equipped item
-            equippedItem = inventoryItems[storedItems];
+            if(storedItems == 0) equippedItem = inventoryItems[storedItems++];
         }
         else return; //If our inventory is full, then we won't equip any more items
     }
@@ -87,7 +93,6 @@ public class Inventory : MonoBehaviour, IItemContainer
             else
             {
                 inventoryItems[itemIndex] = null;//Remove this item this item to our inventory slot
-                inventoryGraphics[itemIndex].Setup(itemIndex, null, this); //Assigning the sprite of this item to the inventory bar on UI
             storedItems--;
             }           
         }
@@ -120,6 +125,12 @@ public class ChestData: MonoBehaviour, IItemContainer
     public LootableItem[] inventoryItems = new LootableItem[16];
     public int[] inventoryStacks = new int[16]; //Handles the stacks of each item in a chest
     public InventorySlot[] inventoryGraphics = new InventorySlot[16];//default placeholder for now
+
+    //Annoyingly, can't just drag and click this like with other natively supported things in Unity - bruh
+    public void Awake()
+    {
+        inventoryGraphics = GetComponentsInChildren<InventorySlot>();
+    }
  
     //Might need a function in here to randomly generate chest contents upon opening
     public void generateContents()

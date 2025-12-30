@@ -10,6 +10,11 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     // References to the "Ghost" image that follows the mouse
     public static GameObject dragIcon; 
+    //Bruh, I need to access the UI canva which is displaying this image
+
+    //By default, this changes the background image instead of the foreground one
+        //This is because of how Unity layers UI with a bottom-up approach - can work around this I think
+    public void Awake() => itemIcon = transform.GetChild(0).GetComponent<Image>() as Image;
 
     //Lowkey got no idea what this function here is doing
     public void Setup(int index, LootableItem item, IItemContainer invent)

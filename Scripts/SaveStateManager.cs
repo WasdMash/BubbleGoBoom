@@ -25,6 +25,7 @@ public class SaveStateManager : MonoBehaviour
         */
 
     [Header("Data sources")]
+    [SerializeField] GameObject[] roomPrefabs;
     HealthManager health;
     GameManager game;
     Transform playerLocation;
@@ -106,7 +107,7 @@ public class SaveStateManager : MonoBehaviour
             foreach(RoomData room in loadedData.rooms)
             {
                 //Search through possible room types to find the same room type as stored
-                foreach(GameObject possibleRoom in ProceduralGeneration.roomPrefabs)
+                foreach(GameObject possibleRoom in roomPrefabs)
                 {
                     if(string.Equals(room.name, possibleRoom.name))
                     {

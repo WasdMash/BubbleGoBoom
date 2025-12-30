@@ -6,7 +6,8 @@ using System;
     //Finna make my life so much easier in the long run
 
 //If I remember correctly, as long as each interface is implemented, I can have as many as I want - yippee!
-public class LootableItem : IComparable<LootableItem>
+[CreateAssetMenu(fileName = "LootableItem", menuName = "Lootables/LootableItem")]
+public class LootableItem : ScriptableObject, IComparable<LootableItem>
 {
     [Header("Item properties")]
     [SerializeField] protected string itemName;
@@ -15,6 +16,8 @@ public class LootableItem : IComparable<LootableItem>
     [SerializeField] protected Animation anim;
     [SerializeField] protected Sprite itemSprite;
     [SerializeField] protected ParticleSystem particles; //I assume that this is a particle effect to be displayed when this item's trigger has been entered
+    //Maybe store the name of the attribute which this item affects
+        //Also have an integer value of how much it changes the attribute by?
     
     // Implement the IComparable<T> interface
     public int CompareTo(LootableItem other)
