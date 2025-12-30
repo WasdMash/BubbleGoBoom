@@ -8,8 +8,9 @@ public class EnemyHealth : MonoBehaviour
 {
 
     [SerializeField] float health;
+    [SerializeField] protected int enemyID;
     [SerializeField] Vector3 position;
-    [SerializeField] int scoreValue;
+    [SerializeField] protected int scoreValue;
     SpriteRenderer spriteRenderer;
     [SerializeField] Color damageColor = Color.red;
     [SerializeField] Color noDamageColor = Color.white;
@@ -66,7 +67,8 @@ public class EnemyHealth : MonoBehaviour
 
     //Updating position so we can 
     void Update(){ position = transform.position;}
-    public Vector3 GetPosiiton(){return position;}
+    public Vector3 GetPosition(){return position;}
+    public int GetID(){return enemyID;}
 
 
     public void Damage(float damage){

@@ -19,6 +19,7 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     //Lowkey got no idea what this function here is doing
     public void Setup(int index, LootableItem item, IItemContainer invent)
     {
+        //I should probably also check for text on this slot and assign the stack number to this slot
         slotIndex = index;
         container = invent;
         if (item != null)

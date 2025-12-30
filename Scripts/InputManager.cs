@@ -28,6 +28,7 @@ public class InputManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this.gameObject); // Optional, if manager persists scenes
         inputs = new PlayerInputsActions();
+        inputs.Gameplay.EquipItem.performed += FindObjectOfType<Inventory>().useEquippedItem;
     }
 
 

@@ -10,12 +10,12 @@ public class Gun : MonoBehaviour {
 	[SerializeField] AudioClip bangClip;
 	public GameObject bullet;
 	[SerializeField] int bulletDamage;
-	public float shootForce, upwardForce;
+	[SerializeField] float shootForce, upwardForce;
 	
 	//Gun stats
-	public float TimeBetweenShots,TimeBetweenShooting, spread, reloadtime;
-	public int magazineSize, bulletsPerTap;
-	public bool allowButtonHold;
+	[SerializeField] float TimeBetweenShots,TimeBetweenShooting, spread, reloadtime;
+	[SerializeField] int magazineSize, bulletsPerTap;
+	[SerializeField] bool allowButtonHold;
 	
 	//How many bullets were shot and how many are left
 	[SerializeField]
@@ -24,15 +24,14 @@ public class Gun : MonoBehaviour {
 	[SerializeField]
 	bool shooting, readyToShoot, reloading, BulletsLeftAreGreaterThanZero;
 	
-	public Transform attackPoint;
+	[SerializeField] Transform attackPoint;
 	
 	//Graphics and visual effects
 	public GameObject muzzleFlash;
 	//public Animator GunAnimator //Might use if I want to play animations when firing and reloading
 	public Text bulletUIText;
 	public GameObject gunUI;
-	[SerializeField]
-	Transform playerTransform;
+	[SerializeField] Transform playerTransform;
 	[SerializeField] [Range(0f,3f)] float armRadius, rotationSpeed;
 	
 	//This is used to fix bugs, which I will defintely need
@@ -60,14 +59,8 @@ public class Gun : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(0, 0, angle+180);
 
 		//Check if I can hold fire button (not really for revolvers)
-		if (allowButtonHold) 
-		{
-			shooting = Input.GetMouseButton(0);
-		}
-		else
-		{ 
-			shooting = Input.GetMouseButtonDown(0);
-		}
+		if (allowButtonHold)  shooting = Input.GetMouseButton(0);
+		else shooting = Input.GetMouseButtonDown(0);
 		
 		//Triggering the reload functions
 		if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
@@ -127,11 +120,7 @@ public class Gun : MonoBehaviour {
         }
         
         //If I want to shoot multiple bullets per Tap, e.g a shotgun
-        if(bulletShot < bulletsPerTap && bulletsLeft > 0)
-        {
-            Invoke("Shoot", TimeBetweenShots);
-        }
-		
+        if(bulletShot < bulletsPerTap && bulletsLeft > 0) Invoke("Shoot", TimeBetweenShots);	
 	}
 	
 	//Allows me to shoot again after some time
@@ -162,9 +151,6 @@ public class Gun : MonoBehaviour {
 		else BulletsLeftAreGreaterThanZero = true;
 		MyInput();
 		
-		if(gunUI != null)
-		{
-			bulletUIText.text = (bulletsLeft / bulletsPerTap).ToString() + " / " + (magazineSize / bulletsPerTap).ToString();
-		}
+		if(gunUI != null) bulletUIText.text = (bulletsLeft / bulletsPerTap).ToString() + " / " + (magazineSize / bulletsPerTap).ToString();
 	}
 }

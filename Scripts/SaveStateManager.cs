@@ -26,6 +26,7 @@ public class SaveStateManager : MonoBehaviour
 
     [Header("Data sources")]
     [SerializeField] GameObject[] roomPrefabs;
+    [SerializeField] GameObject[] enemyTypes;
     HealthManager health;
     GameManager game;
     Transform playerLocation;
@@ -59,13 +60,6 @@ public class SaveStateManager : MonoBehaviour
         enemies = new List<EnemyHealth>(FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None)); //Assumes that all enemies have the same script attached to them
         chests = new List<ChestData>(FindObjectsOfType<ChestData>());
         //Now that I have these items in a room, I need to serialise information about them
-        /*
-        Namely,
-            Their type (room type, enemy type)
-            Location
-            Referenece to their sprite (if I have an array of sprites to chooose from, then just get its index)
-                Makes it much easier than trying to save multiple copies of the same image
-        */
 
         currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation.position, playerInventory, rooms, enemies, chests);
 
@@ -106,28 +100,18 @@ public class SaveStateManager : MonoBehaviour
             //Will need to instantiate the rooms and enemies in their correct positions
             foreach(RoomData room in loadedData.rooms)
             {
-                //Search through possible room types to find the same room type as stored
-                foreach(GameObject possibleRoom in roomPrefabs)
-                {
-                    if(string.Equals(room.name, possibleRoom.name))
-                    {
-                        //Cool, we've found the room type that we want to instantiate
-                        Instantiate(possibleRoom, room.position, possibleRoom.transform.rotation);
-                        //Manually assign its RoomData values from room to restore the room fully to its proper form
-                        RoomData newRoom = possibleRoom.GetComponent<RoomData>();
-                        newRoom = new RoomData(room); //Copying the values over so nothing is lost
-                    }
-                }
+                //Cool, we've found the room type that we want to instantiate
+                GameObject currentRoom = roomPrefabs[room.GetID()];
+                Instantiate(currentRoom, room.GetPosition(), currentRoom.transform.rotation);
+                //Manually assign its RoomData values from room to restore the room fully to its proper form
+                RoomData newRoom = currentRoom.GetComponent<RoomData>();
+                newRoom = new RoomData(room); //Copying the values over so nothing is lost
             }
 
-            foreach(EnemyHealth enemy in loadedData.enemies)
-            {
-                //Ignore the health - I want to punish users for logging out by resetting health
+            //Ignore the health - I want to punish users for logging out by resetting health
                     //Can be set here though in case they really complain about this feature
-                //Set the enemy type and position
-                    //Might have to search through possible enemy types and instantiate an enemy with a matching name
-                //Do that and we should be good to go
-            }
+            foreach(EnemyHealth enemy in loadedData.enemies) Instantiate(enemyTypes[enemy.GetID()], enemy.GetPosition(), Quaternion.identity);
+            
             foreach(ChestData chest in chests)
             {
                 //The usual

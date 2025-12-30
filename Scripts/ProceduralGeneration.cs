@@ -78,7 +78,7 @@ public class ProceduralGeneration : MonoBehaviour
             
             // Move the instantiated room to the correct position
             newRoomInstance.transform.position = spawnPosition;
-            newRoomInstance.GetComponent<RoomData>().position = spawnPosition;
+            newRoomInstance.GetComponent<RoomData>().SetPosition(spawnPosition);
             currentRoomCount++;
 
             // Disable the door trigger that connects back to the current room

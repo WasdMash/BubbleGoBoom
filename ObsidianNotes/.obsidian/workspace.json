@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -208,11 +208,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "8c60dbec2bc8fe7f",
+  "active": "719c9e2c82e5e47a",
   "lastOpenFiles": [
+    "Buffs.md",
     "Levels.md",
     "Save state handling.md",
-    "Buffs.md",
     "Inventory system planning.md",
     "Bubble Go Boom.md",
     "Bugs.md",
