@@ -19,6 +19,7 @@ public class ChestData: MonoBehaviour, IItemContainer
     public void Awake()
     {
         inventoryGraphics = GetComponentsInChildren<InventorySlot>();
+        RefreshUI();
     }
  
     //Might need a function in here to randomly generate chest contents upon opening
@@ -39,27 +40,17 @@ public class ChestData: MonoBehaviour, IItemContainer
     public LootableItem GetItem(int index) => inventoryItems[index];
     public void SetItem(int index, LootableItem item)
     {
-        //First check if a copy of the item exists - if so, stack it
-        if(inventoryItems[index].CompareTo(item) != 0)
+        if(item != null)
         {
-            if(inventoryItems[index] is not Weapon) inventoryStacks[index]++; //Only if pickUpItem is not a weapon
-        }
-        else if(inventoryItems[index] == null) inventoryItems[index] = item;//Add this item to our empty inventory slot
-        RefreshUI();
-    }
-    
-    /*
-     Need to make a system of either selecting or dragging things in and out of this chest
-    */
-    // Swaps items between two indices (used for dragging within the chest)
-    public void SwapItems(int indexA, int indexB)
-    {
-        //Swapping the actual item
-        LootableItem temp = inventoryItems[indexA];
-        inventoryItems[indexA] = inventoryItems[indexB];
-        inventoryItems[indexB] = temp;
-
-        //Will need a function to refresh the UI to show the new items
+            //The order of these checks is important - will get errors if we first compare a null value in .CompareTo()
+            if(inventoryItems[index] == null) inventoryItems[index] = item;//Add this item to our empty inventory slot
+            else if(inventoryItems[index].CompareTo(item) != 0)
+            {
+                //First check if a copy of the item exists - if so, stack it
+                if(inventoryItems[index] is not Weapon) inventoryStacks[index]++; //Only if pickUpItem is not a weapon
+            }
+        } 
+        else inventoryItems[index] = null;
         RefreshUI();
     }
 
@@ -69,7 +60,7 @@ public class ChestData: MonoBehaviour, IItemContainer
         RefreshUI();
     } 
 
-        public void RefreshUI()
+    public void RefreshUI()
     {
         //In theory, if inventoryGraphics are my UI slots holding my items, this should be enough
             //Should probably show the stack number of an item as well in this function

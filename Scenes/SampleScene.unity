@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 10
   itemIcon: {fileID: 0}
 --- !u!114 &352445344
 MonoBehaviour:
@@ -1534,19 +1534,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 352445345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &352445345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1638,7 +1626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 11
   itemIcon: {fileID: 0}
 --- !u!114 &354162946
 MonoBehaviour:
@@ -1683,19 +1671,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 354162947}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &354162947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,7 +1763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 9
   itemIcon: {fileID: 0}
 --- !u!114 &359738770
 MonoBehaviour:
@@ -1832,19 +1808,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 359738771}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &359738771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,19 +1945,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 379596052}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &379596052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2085,7 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 8
   itemIcon: {fileID: 0}
 --- !u!114 &427637568
 MonoBehaviour:
@@ -2130,19 +2082,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 427637569}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &427637569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2458,7 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 5
   itemIcon: {fileID: 0}
 --- !u!114 &444640028
 MonoBehaviour:
@@ -2503,19 +2443,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 444640029}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &444640029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2891,7 +2819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 7
   itemIcon: {fileID: 0}
 --- !u!114 &506407566
 MonoBehaviour:
@@ -2936,19 +2864,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 506407567}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &506407567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4624,7 +4540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 13
   itemIcon: {fileID: 0}
 --- !u!114 &1062420752
 MonoBehaviour:
@@ -4669,19 +4585,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1062420753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1062420753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5236,19 +5140,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1154678841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1835020840}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1154678841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6516,7 +6408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 14
   itemIcon: {fileID: 0}
 --- !u!114 &1403479695
 MonoBehaviour:
@@ -6561,19 +6453,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1403479696}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1403479696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6919,19 +6799,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1462897603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1462897603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7291,7 +7159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 15
   itemIcon: {fileID: 0}
 --- !u!114 &1522120737
 MonoBehaviour:
@@ -7336,19 +7204,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1522120738}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1522120738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7894,19 +7750,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1684411266}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1684411266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8267,7 +8111,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e2d7f179c393c0d4a8d4f1de7932d5bc, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -8545,7 +8389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 4
   itemIcon: {fileID: 0}
 --- !u!114 &1852181099
 MonoBehaviour:
@@ -8590,19 +8434,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1852181100}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1852181100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8769,7 +8601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 12
   itemIcon: {fileID: 0}
 --- !u!114 &1854797806
 MonoBehaviour:
@@ -8814,19 +8646,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1854797807}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1854797807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9143,7 +8963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7c11bebfebc8845bcf2886089ef5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
+  slotIndex: 6
   itemIcon: {fileID: 0}
 --- !u!114 &2042458507
 MonoBehaviour:
@@ -9188,19 +9008,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2042458508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1599745193}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: EquipItem
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2042458508
 MonoBehaviour:
   m_ObjectHideFlags: 0

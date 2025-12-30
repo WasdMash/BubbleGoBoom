@@ -36,7 +36,11 @@ public class Inventory : MonoBehaviour, IItemContainer
             inventoryGraphics[i] = other.inventoryGraphics[i];     
         }
     }
-    public LootableItem GetItem(int index) => inventoryItems[index];
+    public LootableItem GetItem(int index)
+    {
+        if(inventoryItems[index] != null) return inventoryItems[index];
+        else return null;
+    }
 
     public void PickUpItem(LootableItem item)
     {
@@ -61,7 +65,17 @@ public class Inventory : MonoBehaviour, IItemContainer
     }
     public void SetItem(int index, LootableItem item)
     {
-        inventoryItems[index] = item;//Add this item to our inventory slot
+        if(item != null)
+        {
+            //The order of these checks is important - will get errors if we first compare a null value in .CompareTo()
+            if(inventoryItems[index] == null) inventoryItems[index] = item;//Add this item to our empty inventory slot
+            else if(inventoryItems[index].CompareTo(item) != 0)
+            {
+                //First check if a copy of the item exists - if so, stack it
+                if(inventoryItems[index] is not Weapon) inventoryStacks[index]++; //Only if pickUpItem is not a weapon
+            }
+        } 
+        else inventoryItems[index] = null;
         RefreshUI();
     }
 

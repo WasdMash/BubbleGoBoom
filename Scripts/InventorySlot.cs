@@ -14,7 +14,7 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     //By default, this changes the background image instead of the foreground one
         //This is because of how Unity layers UI with a bottom-up approach - can work around this I think
-    public void Awake() => itemIcon = transform.GetChild(0).GetComponent<Image>() as Image;
+    public void Awake() => itemIcon = transform.Find("SpriteBackground").GetComponent<Image>();
 
     //Lowkey got no idea what this function here is doing
     public void Setup(int index, LootableItem item, IItemContainer invent)
@@ -27,7 +27,9 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             itemIcon.sprite = item.getSprite(); // Assumes LootableItem has a sprite field
             itemIcon.enabled = true;
         }
-        else itemIcon.enabled = false;
+        //Chests decided to be extra annoying and not work like main inventory, despite having basically the same code
+        if (itemIcon == null) itemIcon = transform.Find("SpriteBackground").GetComponent<Image>();
+        if(item == null) itemIcon.enabled = false;
         
     }
 
@@ -40,7 +42,6 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         dragIcon.transform.SetParent(GetComponentInParent<Canvas>().transform);
         dragIcon.AddComponent<Image>().sprite = itemIcon.sprite;
         dragIcon.GetComponent<Image>().raycastTarget = false; // Important!
-        dragIcon.transform.SetParent(GameObject.Find("MainCanvas").transform);
         dragIcon.transform.SetAsLastSibling(); // Puts it on top of everything
         
         itemIcon.color = new Color(1, 1, 1, 0.5f); // Fade the original
@@ -64,15 +65,17 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (sourceSlot != null)
         {
-            // 1. Get the items involved
             LootableItem itemMoving = sourceSlot.container.GetItem(sourceSlot.slotIndex);
+            if(container == null) container = GetComponentInParent<IItemContainer>();
             LootableItem itemAlreadyHere = this.container.GetItem(this.slotIndex);
 
-            // 2. Swap them across containers
+            //Swap them across containers
             this.container.SetItem(this.slotIndex, itemMoving);
             sourceSlot.container.SetItem(sourceSlot.slotIndex, itemAlreadyHere);
 
-            // 3. Refresh both UI panels
+            //Refreshing both of the UI panels
+            container.RefreshUI();
+            sourceSlot.container.RefreshUI();
         }
     }
 }
