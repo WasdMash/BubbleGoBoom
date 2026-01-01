@@ -11,7 +11,7 @@
 	- [ ] How to actually store it and bind its actions to a button shouldn't be hard to figure out?
 - [ ] Actually creating a choice of weapons and consumables
 	- [ ] ![[Buffs]]
-	- [ ] ![[Player]]
+	- [ ] ![[Item slots]]
 - [ ] **Locking the player in a room whenever a boss is active and alive**
 	- [ ] Tracking the boss' health and opening the triggers to doors when their health is 0
 - [ ] **Implementing save states in the game**

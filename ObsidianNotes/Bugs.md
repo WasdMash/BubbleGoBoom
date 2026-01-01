@@ -1,2 +1,0 @@
-- You don't lose health once you die
-	- Not true reset and the healthbar just refuses to change

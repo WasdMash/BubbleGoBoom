@@ -13,58 +13,57 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Levels.md",
+                "file": "World building/The story.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Levels"
+              "title": "The story"
             }
           },
           {
-            "id": "719c9e2c82e5e47a",
+            "id": "184343e8c08a5c07",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Inventory system planning.md",
+                "file": "World building/The Clean Kingdom.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Inventory system planning"
+              "title": "The Clean Kingdom"
             }
           },
           {
-            "id": "8c60dbec2bc8fe7f",
+            "id": "bd2eaac7e14c0692",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Buffs.md",
+                "file": "Character profiles/Character profile - Tom.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Buffs"
+              "title": "Character profile - Tom"
             }
           },
           {
-            "id": "681d0801785704ca",
+            "id": "7008da1af0ba6a69",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Save state handling.md",
+                "file": "Character profiles/Character profile - King Olay.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Save state handling"
+              "title": "Character profile - King Olay"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -208,29 +207,40 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "719c9e2c82e5e47a",
+  "active": "562f55ef46406c29",
   "lastOpenFiles": [
-    "Buffs.md",
-    "Levels.md",
-    "Save state handling.md",
-    "Inventory system planning.md",
-    "Bubble Go Boom.md",
-    "Bugs.md",
-    "Ideas.md",
-    "Things to work on.md",
+    "World building/The Clean Kingdom.md",
+    "Character profiles/Character profile - King Olay.md",
+    "World building/The story.md",
+    "World building/Sequel ideas.md",
+    "Character profiles/Character profile - Tom.md",
+    "World building/The world map.md",
     "Excalidraw/Drawing 2025-12-16 18.43.17.excalidraw.md",
+    "Enemies/BigSlime.png",
+    "Enemies/Pew_pew_pew_slime.png",
+    "Enemies",
+    "Enemies/Tank_creperslime.png",
+    "Enemies/SmolSlime.png",
+    "Character profiles/Enemies.md",
+    "Excalidraw/KingOlay.png",
+    "Features/Item slots.md",
+    "Features/IMPORTANT CORE FEATURES.md",
+    "Bubble Go Boom.md",
+    "Features",
+    "World building",
+    "Character profiles",
+    "Excalidraw/Head.png",
+    "Features/Bugs.md",
+    "Features/Save state handling.md",
+    "Features/Buffs.md",
+    "Features/Things to work on.md",
+    "Features/Ideas.md",
+    "Features/Inventory system planning.md",
     "Excalidraw",
-    "IMPORTANT CORE FEATURES.md",
-    "Player.md",
-    "Enemies.md",
     "Untitled.base",
     "Bugs.md.meta",
     "Welcome.md.meta",
     "Player.md.meta",
-    "Levels.md.meta",
-    "Ideas.md.meta",
-    "IMPORTANT CORE FEATURES.md.meta",
-    "Enemies.md.meta",
-    "Buffs.md.meta"
+    "Levels.md.meta"
   ]
 }
