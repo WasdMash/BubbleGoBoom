@@ -63,7 +63,8 @@
               "title": "Character profile - King Olay"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -207,14 +208,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "562f55ef46406c29",
+  "active": "bd2eaac7e14c0692",
   "lastOpenFiles": [
-    "World building/The Clean Kingdom.md",
-    "Character profiles/Character profile - King Olay.md",
     "World building/The story.md",
-    "World building/Sequel ideas.md",
-    "Character profiles/Character profile - Tom.md",
     "World building/The world map.md",
+    "World building/The Clean Kingdom.md",
+    "Character profiles/Character profile - Tom.md",
+    "Character profiles/Character profile - King Olay.md",
+    "World building/Sequel ideas.md",
     "Excalidraw/Drawing 2025-12-16 18.43.17.excalidraw.md",
     "Enemies/BigSlime.png",
     "Enemies/Pew_pew_pew_slime.png",

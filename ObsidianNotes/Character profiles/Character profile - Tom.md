@@ -1,4 +1,4 @@
-## ![[Head.png|right|100]]  **Name**: Tom Richter
+## ![[Head.png|right|100]]  **Name**: Thomas Richter
 ## Age: 11
 - Birthday: 9/10/57
 
@@ -18,6 +18,9 @@ Tom is a brunette, eyeless little boy with a simple clothing style - green shirt
 	- Anything which gets in the way of this is viewed as filler and must be eliminated
 ## Hobbies:
 - Playing games - favourite is Halo because he can do so many things (e.g drive cars, drag stuff around mid-air) whilst still brutally killing aliens without remorse
+- Re-enacting the stories of his favourite hero, Zorro, recorded on a cassette tape he got from his grandparents (because Kaiketsu Zoro is like from the 90s)
+- Imagining the scenarios that local legend Guillaume Tell could get up to in the modern day
+	- Must be read a bedtime story of Guillaume by his parents every night before he goes to sleep
 
 ## Likes and dislikes:
 ### Likes:
