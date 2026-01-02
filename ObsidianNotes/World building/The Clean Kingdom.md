@@ -7,6 +7,11 @@
 	- Patrick would love it here. It's also probably the easiest place for him to implement his regime with little resistance
 	- However, due to Switzerland being a very strong consumer of alcohol (11.5 litres per person in comparison to 5 litres), dismantling the alcohol culture could prove very troublesome.
 
+## Points of further research to consolidate inspiration
+- Should research how authoritative states create propaganda to solidify their control
+	- Especially use the examples where it is done so well that the civilians never realise and don't ever think of revolting
+- Research examples of government cover-ups
+
 ## IRL location
 
 ## History [Huge spoiler warning]

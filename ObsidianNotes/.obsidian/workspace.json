@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "184343e8c08a5c07",
+            "id": "83837791ff12b603",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -33,6 +33,18 @@
               },
               "icon": "lucide-file",
               "title": "The Clean Kingdom"
+            }
+          },
+          {
+            "id": "eaa2896abce46536",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "World building/The world map.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "The world map"
             }
           },
           {
@@ -64,7 +76,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -208,13 +220,13 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "bd2eaac7e14c0692",
+  "active": "83837791ff12b603",
   "lastOpenFiles": [
-    "World building/The story.md",
     "World building/The world map.md",
-    "World building/The Clean Kingdom.md",
-    "Character profiles/Character profile - Tom.md",
     "Character profiles/Character profile - King Olay.md",
+    "Character profiles/Character profile - Tom.md",
+    "World building/The story.md",
+    "World building/The Clean Kingdom.md",
     "World building/Sequel ideas.md",
     "Excalidraw/Drawing 2025-12-16 18.43.17.excalidraw.md",
     "Enemies/BigSlime.png",
