@@ -30,27 +30,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float cameraWidth, cameraHeight;
     [SerializeField] float offsetMultiplier = 0.9f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        /*
-            Empty object is parent of camera
-            Movement should move the empty object
-                The mouse position should directly move the camera object directly
-        */
         anim = GetComponent<Animator>();
-
         main_Camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         main_Camera.transform.LookAt(rb.gameObject.transform);
         //For orthographic cameras if calculating manually  
         cameraHeight = Camera.main.orthographicSize * 2f;  // Total height of the camera's view
         cameraWidth = cameraHeight * Camera.main.aspect;   // Total width of the camera's view based on the aspect ratio
-
         Cursor.lockState = CursorLockMode.Confined;
         dashTimer = dashCooldown;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Read the processed input from the manager

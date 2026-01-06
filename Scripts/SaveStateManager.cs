@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 public class SaveStateManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class SaveStateManager : MonoBehaviour
     [Header("Data sources")]
     [SerializeField] GameObject[] roomPrefabs;
     [SerializeField] GameObject[] enemyTypes;
+    [SerializeField] GameObject[] chestTypes;
     HealthManager health;
     GameManager game;
     Transform playerLocation;
@@ -43,8 +45,7 @@ public class SaveStateManager : MonoBehaviour
     void Start()
     {
         health = FindObjectOfType<HealthManager>();
-        game = FindObjectOfType<GameManager>();
-        
+        game = FindObjectOfType<GameManager>();       
     }
 
     public void SaveState()
@@ -75,7 +76,7 @@ public class SaveStateManager : MonoBehaviour
         File.WriteAllText(path, json);
 
     }
-
+    public void SaveState(InputAction.CallbackContext context) => SaveState();
     public void LoadState()
     {
         //Loading our player's vital info from PlayerPrefs into our current game state
@@ -95,7 +96,7 @@ public class SaveStateManager : MonoBehaviour
             playerInventory = FindObjectOfType<Inventory>();
 
             playerLocation.position = loadedData.currentPlayerLocation;
-            playerInventory = new Inventory(ref loadedData.inventory);
+            loadedData.inventory.copyTo(ref playerInventory);
 
             //Will need to instantiate the rooms and enemies in their correct positions
             foreach(RoomData room in loadedData.rooms)
@@ -105,7 +106,7 @@ public class SaveStateManager : MonoBehaviour
                 Instantiate(currentRoom, room.GetPosition(), currentRoom.transform.rotation);
                 //Manually assign its RoomData values from room to restore the room fully to its proper form
                 RoomData newRoom = currentRoom.GetComponent<RoomData>();
-                newRoom = new RoomData(room); //Copying the values over so nothing is lost
+                room.copyTo(ref newRoom); //Copying the values over so nothing is lost
             }
 
             //Ignore the health - I want to punish users for logging out by resetting health
@@ -114,13 +115,14 @@ public class SaveStateManager : MonoBehaviour
             
             foreach(ChestData chest in chests)
             {
-                //The usual
-                    //Instantiate a chest object in its correct position
-                //Check if it has been opened
-                    //If it has, fetch its previous contents and re-generate those
-                    //If not, ignore this step
+                //Instantiate a chest object in its correct position
+                GameObject currentChest = chestTypes[chest.GetID()];
+                Instantiate(currentChest, chest.GetPosition(), Quaternion.identity);
+                ChestData newChest = chest.GetComponent<ChestData>();
+                chest.copyTo(ref newChest);
             }
 
         }
     }
+    public void LoadState(InputAction.CallbackContext context) => LoadState();
 }

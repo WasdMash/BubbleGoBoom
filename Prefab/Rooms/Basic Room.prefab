@@ -137,6 +137,10 @@ MonoBehaviour:
   hasEastDoor: 1
   hasSouthDoor: 1
   hasWestDoor: 1
+  roomID: 0
+  name: Basic Room
+  position: {x: 0, y: 0, z: 0}
+  bossInsideDefeated: 0
 --- !u!1 &5251293574136644875
 GameObject:
   m_ObjectHideFlags: 0

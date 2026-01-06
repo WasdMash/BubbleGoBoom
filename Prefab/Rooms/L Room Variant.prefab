@@ -354,8 +354,8 @@ MonoBehaviour:
   hasEastDoor: 0
   hasSouthDoor: 1
   hasWestDoor: 1
-  roomID: 0
-  name: 
+  roomID: 4
+  name: L Room
   position: {x: 0, y: 0, z: 0}
   bossInsideDefeated: 0
 --- !u!1001 &1158683877435341259

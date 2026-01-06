@@ -354,8 +354,8 @@ MonoBehaviour:
   hasEastDoor: 1
   hasSouthDoor: 0
   hasWestDoor: 0
-  roomID: 0
-  name: 
+  roomID: 3
+  name: FlippedL
   position: {x: 0, y: 0, z: 0}
   bossInsideDefeated: 0
 --- !u!1001 &1158683877435341259

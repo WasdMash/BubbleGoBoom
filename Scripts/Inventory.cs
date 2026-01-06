@@ -25,15 +25,15 @@ public class Inventory : MonoBehaviour, IItemContainer
     }
 
     //A beautiful copy constructor yet again
-    public Inventory(ref Inventory other){
-        storedItems = other.storedItems;
+    public void copyTo(ref Inventory other){
+        other.storedItems = storedItems;
         //Will need to double check if this data is copied correctly
-        equippedItem = other.equippedItem;
-        Debug.Log(equippedItem.getName() + " and " + other.equippedItem.getName() + " should be the same");
+        other.equippedItem = equippedItem;
+       if(equippedItem != null) Debug.Log(equippedItem.getName() + " and " + other.equippedItem.getName() + " should be the same");
         for(int i=0;i<4;i++){
-            inventoryItems[i] = other.inventoryItems[i];
-            inventoryStacks[i] = other.inventoryStacks[i];
-            inventoryGraphics[i] = other.inventoryGraphics[i];     
+            other.inventoryItems[i] = inventoryItems[i];
+            other.inventoryStacks[i] = inventoryStacks[i];
+            other.inventoryGraphics[i] = inventoryGraphics[i];     
         }
     }
     public LootableItem GetItem(int index)

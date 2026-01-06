@@ -17,15 +17,15 @@ public class RoomData: MonoBehaviour
         //I'll use this boolean to determine when to lock the player inside of a room
 
     //Yay! - we're using copy constructors!
-    public RoomData(RoomData oldRoom)
+    public void copyTo(ref RoomData oldRoom)
     {
-        this.hasNorthDoor = oldRoom.hasNorthDoor;
-        this.hasEastDoor = oldRoom.hasEastDoor;
-        this.hasSouthDoor = oldRoom.hasSouthDoor;
-        this.hasWestDoor = oldRoom.hasWestDoor;
-        this.name = oldRoom.name;
-        this.position = oldRoom.position;
-        this.bossInsideDefeated = oldRoom.bossInsideDefeated;
+        oldRoom.hasNorthDoor = hasNorthDoor;
+        oldRoom.hasEastDoor = hasEastDoor;
+        oldRoom.hasSouthDoor = hasSouthDoor;
+        oldRoom.hasWestDoor = hasWestDoor;
+        oldRoom.name = name;
+        oldRoom.position = position;
+        oldRoom.bossInsideDefeated = bossInsideDefeated;
     }
 
     public int GetID() {return roomID;}

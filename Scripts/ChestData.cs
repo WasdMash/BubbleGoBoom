@@ -8,20 +8,48 @@ using System.Linq;
 [System.Serializable]
 public class ChestData: MonoBehaviour, IItemContainer
 {
-    [SerializeField] Sprite closedSprite, openSprite; //Need a sprite to represent it both closed and open
-    [SerializeField] bool opened = false; //We need to keep tracked of this so that we only save the inventories of opened chests
+    [SerializeField] protected int chestID; //Finding this type of object should be easier now
+    [SerializeField] protected Sprite closedSprite, openSprite; //Need a sprite to represent it both closed and open
+    [SerializeField] protected GameObject chestInventoryUI;
+    [SerializeField] protected bool opened = false; //We need to keep tracked of this so that we only save the inventories of opened chests
     //Each chest in theory stores a 4x4 grid of items
-    public LootableItem[] inventoryItems = new LootableItem[16];
-    public int[] inventoryStacks = new int[16]; //Handles the stacks of each item in a chest
-    public InventorySlot[] inventoryGraphics = new InventorySlot[16];//default placeholder for now
+    [SerializeField] protected LootableItem[] inventoryItems = new LootableItem[16];
+    [SerializeField] protected int[] inventoryStacks = new int[16]; //Handles the stacks of each item in a chest
+    [SerializeField] protected InventorySlot[] inventoryGraphics = new InventorySlot[16];//default placeholder for now
+    
+    [SerializeField] protected InputActionReference chestInteraction;
+    [SerializeField] protected Vector3 position;
+    bool isPlayerInRange = false;
 
-    //Annoyingly, can't just drag and click this like with other natively supported things in Unity - bruh
+    public void copyTo(ref ChestData other)
+    {
+        other.chestID = chestID;
+        other.closedSprite = closedSprite;
+        other.openSprite = openSprite;
+        other.chestInventoryUI = chestInventoryUI;
+        other.opened = opened;
+        //For optimisation's sake, we aren't copying a thing if the chest hasn't been opened before
+        if (opened)
+        {
+            for(int i = 0; i < other.inventoryItems.Length; i++)
+            {
+                other.inventoryItems[i] = inventoryItems[i];
+                other.inventoryStacks[i] = inventoryStacks[i];
+                other.inventoryGraphics[i] = inventoryGraphics[i];
+            }
+        }     
+        other.chestInteraction = chestInteraction;
+        other.position = position;
+
+    }
+
     public void Awake()
     {
-        inventoryGraphics = GetComponentsInChildren<InventorySlot>();
-        RefreshUI();
+        //Cannot find inactive objects - just have to hope that we can use something to find it when it needs to be found
+        OnEnable();
+        position = gameObject.transform.position;
     }
- 
+
     //Might need a function in here to randomly generate chest contents upon opening
     public void generateContents()
     {
@@ -71,7 +99,51 @@ public class ChestData: MonoBehaviour, IItemContainer
     }
 
     //Functions to open and close the chest
-    public void closeChest() {opened = false; GetComponent<SpriteRenderer>().sprite = closedSprite;}
-    public void openChest() {opened = true; GetComponent<SpriteRenderer>().sprite = openSprite; RefreshUI();}
+    public void closeChest() {
+        GetComponent<SpriteRenderer>().sprite = closedSprite;
+        //Should turn off the chest UI now
+        chestInventoryUI.SetActive(false);
+    }
+    public void openChest() {
+        //Should probably check if this is the first time that the chest is opened
+            //Did we just change the value of opened? If so, now generate its contents
+        if(!opened) generateContents();
+        //Should turn on the Chest UI plane now
+        chestInventoryUI.SetActive(true);
+        inventoryGraphics = chestInventoryUI.GetComponentsInChildren<InventorySlot>();
+        GetComponent<SpriteRenderer>().sprite = openSprite;
+        RefreshUI();
+        opened = true;
+    }
+
+    private void OnEnable() => chestInteraction.action.Enable();
+    private void OnDisable() => chestInteraction.action.Disable();
+
+    void Update()
+    {
+        // Check if the player is nearby AND if they just pressed the button
+        if (isPlayerInRange && chestInteraction.action.triggered)
+        {
+            Debug.Log("Interacting with chest!");
+            if (chestInventoryUI.activeSelf) closeChest();
+            else openChest();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {if (col.CompareTag("Player")) isPlayerInRange = true;}
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            isPlayerInRange = false;
+            // Optional: Close the chest UI if the player walks away
+            if(chestInventoryUI.activeSelf) closeChest();
+        }
+    }
+
+    //Set of necessary getters and setters
+    public int GetID() {return chestID;}
+    public bool isOpened() {return opened;}
+    public Vector3 GetPosition() {return position;}
 }
 

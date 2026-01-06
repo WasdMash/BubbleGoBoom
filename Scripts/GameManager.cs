@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
 {
 
     [Header("Variables to manage")]
-    [SerializeField] static LootableItem[] possibleItemsToDrop;
+    [SerializeField] private LootableItem[] inspectorArray; //Using this to visually assign which items we can use
+    static LootableItem[] possibleItemsToDrop;
     [SerializeField] int gameScore = 1;
     [SerializeField] int waves = 0;
 
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         health = GetComponent<HealthManager>();
         waves = 0;
+        possibleItemsToDrop = inspectorArray;
         StartCoroutine(SpawnWave());
     }
 

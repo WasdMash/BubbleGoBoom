@@ -29,6 +29,10 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject); // Optional, if manager persists scenes
         inputs = new PlayerInputsActions();
         inputs.Gameplay.EquipItem.performed += FindObjectOfType<Inventory>().useEquippedItem;
+        #if UNITY_EDITOR
+        inputs.Gameplay.SaveGame.performed += FindObjectOfType<SaveStateManager>().SaveState;
+        inputs.Gameplay.LoadGame.performed += FindObjectOfType<SaveStateManager>().LoadState;
+        #endif
     }
 
 
