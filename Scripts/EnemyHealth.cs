@@ -3,13 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Newtonsoft.Json;
 
 public class EnemyHealth : MonoBehaviour
 {
 
     [SerializeField] float health;
-    [SerializeField] protected int enemyID;
-    [SerializeField] Vector3 position;
     [SerializeField] protected int scoreValue;
     SpriteRenderer spriteRenderer;
     [SerializeField] Color damageColor = Color.red;
@@ -46,10 +45,12 @@ public class EnemyHealth : MonoBehaviour
 
     Coroutine changeColorCoroutine;
     GameManager gameManager;
+    [SerializeField] EnemyInfo enemyStats;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyStats = new EnemyInfo();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if(spriteRenderer == null){
             Debug.Log("No sprite renderer found");
@@ -65,11 +66,13 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
-    //Updating position so we can 
-    void Update(){ position = transform.position;}
-    public Vector3 GetPosition(){return position;}
-    public int GetID(){return enemyID;}
-
+    void Update() {
+        //Repeatedly updating the position of enemyInfo on this script
+        Vector3 currentPos = transform.position;
+        float[] posFloatArray = new float[3];
+        for(int i=0;i<3;i++){ posFloatArray[i] = currentPos[i];}
+        enemyStats.SetPosition(posFloatArray);
+    }
 
     public void Damage(float damage){
         health -= damage;
@@ -111,4 +114,22 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = noDamageColor;
     }
+
+    public EnemyInfo GetEnemyInfo() {return enemyStats;}
+}
+
+[System.Serializable]
+[JsonObject(MemberSerialization.OptOut)] //Need this for Newtonsoft.JSON to acttually serialise everything
+public class EnemyInfo
+{
+    [SerializeField] float health; //For now, won't serialise this to punish saving, lol. Get ragebaited
+    [JsonProperty][SerializeField] protected int enemyID;
+    [JsonProperty][SerializeField] float[] position = new float[3];
+
+    public float[] GetPosition(){return position;}
+    public void SetPosition(float[] newPosition)
+    {
+        for(int i = 0; i < 3; i++) {  position[i] = newPosition[i]; }
+    }
+    public int GetID(){return enemyID;}
 }

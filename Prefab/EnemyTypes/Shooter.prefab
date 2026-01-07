@@ -164,8 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  enemyID: 0
-  position: {x: 0, y: 0, z: 0}
   scoreValue: 15
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   noDamageColor: {r: 1, g: 1, b: 1, a: 1}
@@ -179,6 +177,13 @@ MonoBehaviour:
   pickUpRates:
   - 0.4
   - 1
+  enemyStats:
+    health: 0
+    enemyID: 2
+    position:
+    - 0
+    - 0
+    - 0
 --- !u!114 &4774947344338660884
 MonoBehaviour:
   m_ObjectHideFlags: 0

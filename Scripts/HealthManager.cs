@@ -21,7 +21,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField] Color damageColor = Color.red;
     [SerializeField] Color noDamageColor = Color.white;
 
-    Coroutine damageRoutine;
+    Coroutine damageRoutine, healthBarRoutine;
 
     public void ResetGame()
     {
@@ -61,7 +61,6 @@ public class HealthManager : MonoBehaviour
             //Tell the gameManager to reset the game now, bruh
             game.EndGame(); //Resetting everything else
         }
-        healthBar.value = playerHealth;
         UIChecks();
     }
 
@@ -78,8 +77,9 @@ public class HealthManager : MonoBehaviour
     void UIChecks()
     {
         //if (playerHealth <= (maxPlayerHealth / 5) && !lowHealthUI.activeSelf) lowHealthUI.SetActive(true);
+        if (healthBarRoutine != null) StopCoroutine(healthBarRoutine);
+        healthBarRoutine = StartCoroutine(SmoothChange(playerHealth, .4f));
         if (amIDead) gameOverUI.SetActive(true);
-
     }
     
     //Check if this actually works - I don't recall seeing this in action
@@ -88,4 +88,15 @@ public class HealthManager : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         spriteRenderer.color = noDamageColor;
     }
+
+    IEnumerator SmoothChange(float endVal, float duration) {
+    float startVal = healthBar.value;
+    float time = 0;
+    while (time < duration) {
+        healthBar.value = Mathf.Lerp(startVal, endVal, time / duration);
+        time += Time.deltaTime;
+        yield return null; // Wait for next frame
+    }
+    healthBar.value = endVal;
+}
 }

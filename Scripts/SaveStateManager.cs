@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Collections;
 using System.Linq;
 using UnityEngine.InputSystem;
+using Newtonsoft.Json;
 
 public class SaveStateManager : MonoBehaviour
 {
@@ -31,14 +32,14 @@ public class SaveStateManager : MonoBehaviour
     [SerializeField] GameObject[] chestTypes;
     HealthManager health;
     GameManager game;
-    Transform playerLocation;
-    Inventory playerInventory;
+    float[] playerLocation = new float[2];
+    InventoryInfo playerInventory;
     int[] playerInventoryStack = new int[4];
     //I should probably save the layout of the dungeon as well
         //To keep the fear factor up, storing the position of each enemy will be necessary
             //To punish pauses, I will reset enemy health upon reloading (less stuff for me to save so yay!)
     
-    List<RoomData> rooms;
+    List<RoomHandler> rooms;
     List<EnemyHealth> enemies;
     List<ChestData> chests;
 
@@ -52,19 +53,29 @@ public class SaveStateManager : MonoBehaviour
     {
         //We only care about tracking these values when it is actually time to save
             //Anything else will just itnroduce meaningless lag and bottleneck performance
-        playerLocation = FindObjectOfType<PlayerMovement>().gameObject.transform;
-        playerInventory = FindObjectOfType<Inventory>();
+        Vector3 playerPos = FindObjectOfType<PlayerMovement>().gameObject.transform.position;
+        playerInventory = FindObjectOfType<Inventory>().getInfo();
 
         // Using FindObjectsSortMode.None is significantly faster in 2022.3.62f1+
             //I don't really need the found objects to be sorted - I'm looping over them all anyways
-        rooms = new List<RoomData>(FindObjectsByType<RoomData>(FindObjectsSortMode.None));
+        rooms = new List<RoomHandler>(FindObjectsByType<RoomHandler>(FindObjectsSortMode.None));
         enemies = new List<EnemyHealth>(FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None)); //Assumes that all enemies have the same script attached to them
-        chests = new List<ChestData>(FindObjectsOfType<ChestData>());
+        chests = new List<ChestData>(FindObjectsByType<ChestData>(FindObjectsSortMode.None));
         //Now that I have these items in a room, I need to serialise information about them
 
-        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation.position, playerInventory, rooms, enemies, chests);
+        playerLocation[0] = playerPos.x;
+        playerLocation[1] = playerPos.y;
 
-        string json = JsonUtility.ToJson(currentGameState);
+        List<EnemyInfo> enemyInfos = new List<EnemyInfo>();
+        foreach(EnemyHealth e in enemies) { enemyInfos.Add(e.GetEnemyInfo()); }
+        List<RoomData> roomInfos = new List<RoomData>();
+        foreach(RoomHandler r in rooms) {roomInfos.Add(r.GetRoomData());}
+
+        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation, playerInventory, roomInfos, enemyInfos, chests);
+
+        //string json = JsonUtility.ToJson(currentGameState); //This is the JSONUtility version - good for non-nested objects and non-gameObjects
+        var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore}; //Avoids normlisation reference issues
+        string json = JsonConvert.SerializeObject(currentGameState, Formatting.Indented, settings);
         //Will need to adjust file nme in case I want a save file for each user of the game/ each save state
         string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
         // Optional but recommended: ensure the folder exists
@@ -87,23 +98,27 @@ public class SaveStateManager : MonoBehaviour
             //Convert this thing into a GameState and then load its variables into the game, baby
                 //Don't forget to decrypt it, so we can actually understand it
             string jsonString = File.ReadAllText(path);
-            GameState loadedData = JsonUtility.FromJson<GameState>(jsonString);
+            GameState loadedData = JsonConvert.DeserializeObject<GameState>(jsonString);
+            //GameState loadedData = JsonUtility.FromJson<GameState>(jsonString); //Old JSONUtility version
 
             //Loading in the appropiate data values
             health.SetPlayerHealth(loadedData.playerHealth);
             game.SetGameScore(loadedData.currentScore);
-            playerLocation = FindObjectOfType<PlayerMovement>().gameObject.transform;
-            playerInventory = FindObjectOfType<Inventory>();
-
-            playerLocation.position = loadedData.currentPlayerLocation;
+            for(int i=0;i<2;i++) {playerLocation[i] = loadedData.currentPlayerLocation[i];}
+            
+            //Must work on syncing info between the active Inventory object and its InventoryInfo object
+            playerInventory = FindObjectOfType<Inventory>().getInfo();
             loadedData.inventory.copyTo(ref playerInventory);
 
+            Vector3 pos = new Vector3();
             //Will need to instantiate the rooms and enemies in their correct positions
             foreach(RoomData room in loadedData.rooms)
             {
                 //Cool, we've found the room type that we want to instantiate
                 GameObject currentRoom = roomPrefabs[room.GetID()];
-                Instantiate(currentRoom, room.GetPosition(), currentRoom.transform.rotation);
+                float[] comPos = room.GetPosition();      
+                for(int i=0;i<3;i++) {pos[i] = comPos[i];}
+                Instantiate(currentRoom, pos, currentRoom.transform.rotation);
                 //Manually assign its RoomData values from room to restore the room fully to its proper form
                 RoomData newRoom = currentRoom.GetComponent<RoomData>();
                 room.copyTo(ref newRoom); //Copying the values over so nothing is lost
@@ -111,13 +126,20 @@ public class SaveStateManager : MonoBehaviour
 
             //Ignore the health - I want to punish users for logging out by resetting health
                     //Can be set here though in case they really complain about this feature
-            foreach(EnemyHealth enemy in loadedData.enemies) Instantiate(enemyTypes[enemy.GetID()], enemy.GetPosition(), Quaternion.identity);
+            foreach(EnemyInfo enemy in loadedData.enemies)
+            {
+                float[] comPos = enemy.GetPosition();      
+                for(int i=0;i<3;i++) {pos[i] = comPos[i];}
+                Instantiate(enemyTypes[enemy.GetID()], pos, Quaternion.identity);
+            } 
             
             foreach(ChestData chest in chests)
             {
                 //Instantiate a chest object in its correct position
                 GameObject currentChest = chestTypes[chest.GetID()];
-                Instantiate(currentChest, chest.GetPosition(), Quaternion.identity);
+                Vector3 comPos = chest.GetPosition();
+                pos[0] = comPos.x; pos[1] = comPos.y; pos[2] = comPos.z;
+                Instantiate(currentChest, pos, Quaternion.identity);
                 ChestData newChest = chest.GetComponent<ChestData>();
                 chest.copyTo(ref newChest);
             }

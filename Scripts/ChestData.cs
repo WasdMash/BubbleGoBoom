@@ -4,18 +4,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using System.Linq;
+using Newtonsoft.Json;
 
 [System.Serializable]
+[JsonObject(MemberSerialization.OptOut)] //Need this for Newtonsoft.JSON to acttually serialise everything
+
 public class ChestData: MonoBehaviour, IItemContainer
 {
-    [SerializeField] protected int chestID; //Finding this type of object should be easier now
+    [JsonProperty][SerializeField] protected int chestID; //Finding this type of object should be easier now
     [SerializeField] protected Sprite closedSprite, openSprite; //Need a sprite to represent it both closed and open
     [SerializeField] protected GameObject chestInventoryUI;
-    [SerializeField] protected bool opened = false; //We need to keep tracked of this so that we only save the inventories of opened chests
+    [JsonProperty][SerializeField] protected bool opened = false; //We need to keep tracked of this so that we only save the inventories of opened chests
     //Each chest in theory stores a 4x4 grid of items
-    [SerializeField] protected LootableItem[] inventoryItems = new LootableItem[16];
-    [SerializeField] protected int[] inventoryStacks = new int[16]; //Handles the stacks of each item in a chest
-    [SerializeField] protected InventorySlot[] inventoryGraphics = new InventorySlot[16];//default placeholder for now
+    [JsonProperty][SerializeField] protected LootableItem[] inventoryItems = new LootableItem[16];
+    [JsonProperty][SerializeField] protected int[] inventoryStacks = new int[16]; //Handles the stacks of each item in a chest
+    [JsonProperty][SerializeField] protected InventorySlot[] inventoryGraphics = new InventorySlot[16];//default placeholder for now
     
     [SerializeField] protected InputActionReference chestInteraction;
     [SerializeField] protected Vector3 position;

@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3498216078375769376}
   - component: {fileID: 1732573934597852358}
-  - component: {fileID: 773094366910184279}
+  - component: {fileID: 396313790916223144}
   m_Layer: 0
   m_Name: Basic Room
   m_TagString: Untagged
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1253832682, guid: 9d7d4f2845cc3254dac2e5f5e5c182ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &773094366910184279
+--- !u!114 &396313790916223144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,17 +130,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4071645005445587485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 924f464087a772445b0b4be9ee10493a, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bb2edceaa49eb049b041943c915d4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasNorthDoor: 0
-  hasEastDoor: 1
-  hasSouthDoor: 1
-  hasWestDoor: 1
-  roomID: 0
-  name: Basic Room
-  position: {x: 0, y: 0, z: 0}
-  bossInsideDefeated: 0
+  info:
+    hasNorthDoor: 0
+    hasEastDoor: 1
+    hasSouthDoor: 1
+    hasWestDoor: 1
+    roomID: 0
+    position:
+    - 0
+    - 0
+    - 0
+    bossInsideDefeated: 1
 --- !u!1 &5251293574136644875
 GameObject:
   m_ObjectHideFlags: 0

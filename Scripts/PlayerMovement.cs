@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Newtonsoft.Json;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player movement")]
     [Range(1.0f,100.0f)]
     public float playerSpeed; //Annoyingly, the oil script uses this vaariable - will need to be properly encapsulated before release
+    [JsonIgnore]
     [SerializeField] Rigidbody2D rb;
+    [JsonIgnore]
     Animator anim;
     //bool running = false;
 

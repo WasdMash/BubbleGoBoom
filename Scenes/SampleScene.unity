@@ -7375,14 +7375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af79f9ba30f9464692f839be1a46937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryItems:
-  - {fileID: 11400000, guid: 548a1f136fb6ac54cb96b63a09fd6299, type: 2}
-  - {fileID: 11400000, guid: e2d7f179c393c0d4a8d4f1de7932d5bc, type: 2}
-  - {fileID: 11400000, guid: d3ace9d97aeceea46bf663048ccee12e, type: 2}
-  - {fileID: 0}
-  inventoryStacks: 00000000000000000000000000000000
   equippedItem: {fileID: 0}
-  storedItems: 0
   inventoryGraphics:
   - {fileID: 0}
   - {fileID: 0}
@@ -9150,26 +9143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &773094368822487002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4071645004674530960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 924f464087a772445b0b4be9ee10493a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasNorthDoor: 0
-  hasEastDoor: 1
-  hasSouthDoor: 1
-  hasWestDoor: 1
-  roomID: 0
-  name: 
-  position: {x: 0, y: 0, z: 0}
-  bossInsideDefeated: 0
 --- !u!61 &945607735980436381
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9255,7 +9228,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 5361a6a53ab4a9041b62bf79afbbd21b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9487,7 +9460,7 @@ Transform:
   m_GameObject: {fileID: 4071645004674530960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.11}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -9563,7 +9536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3498216079147682221}
   - component: {fileID: 1732573933758304331}
-  - component: {fileID: 773094368822487002}
+  - component: {fileID: 4071645004674530961}
   m_Layer: 0
   m_Name: Basic Room
   m_TagString: Untagged
@@ -9571,6 +9544,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4071645004674530961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4071645004674530960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb2edceaa49eb049b041943c915d4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  info:
+    hasNorthDoor: 0
+    hasEastDoor: 1
+    hasSouthDoor: 1
+    hasWestDoor: 1
+    roomID: 0
+    position:
+    - 0
+    - 0
+    - 0
+    bossInsideDefeated: 1
 --- !u!114 &4202301525149989791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10327,7 +10323,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: d79de32aba9d6b546afb2b0ae0936af2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -27,7 +27,7 @@ public class ProceduralGeneration : MonoBehaviour
         List<GameObject> validRooms = new List<GameObject>();
         foreach (GameObject roomPrefab in roomPrefabs)
         {
-            RoomData roomData = roomPrefab.GetComponent<RoomData>();
+            RoomData roomData = roomPrefab.GetComponent<RoomHandler>().info;
             if (roomData == null) continue;
             
             bool isValid = false;
@@ -78,7 +78,11 @@ public class ProceduralGeneration : MonoBehaviour
             
             // Move the instantiated room to the correct position
             newRoomInstance.transform.position = spawnPosition;
-            newRoomInstance.GetComponent<RoomData>().SetPosition(spawnPosition);
+            float[] spawnPos = new float[3];
+            spawnPos[0] = spawnPosition.x;
+            spawnPos[1] = spawnPosition.y;
+            spawnPos[2] = spawnPosition.z;
+            newRoomInstance.GetComponent<RoomHandler>().info.SetPosition(spawnPos);
             currentRoomCount++;
 
             // Disable the door trigger that connects back to the current room

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 044a1218e2b91484888e18f23c933972, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -166,7 +166,6 @@ MonoBehaviour:
   noDamageColor: {r: 1, g: 1, b: 1, a: 1}
   isSuicider: 0
   suicider: {fileID: 0}
-  item: {fileID: 5428697101560538437, guid: 3cb13eb26dde5444f8a7dbccf15f53f0, type: 3}
   itemsToDrop:
   - {fileID: 2422075502075839743, guid: c145706d07f10da4ebf545112ea0bb62, type: 3}
   - {fileID: 5428697101560538437, guid: 3cb13eb26dde5444f8a7dbccf15f53f0, type: 3}
@@ -175,6 +174,13 @@ MonoBehaviour:
   pickUpRates:
   - 0.4
   - 1
+  enemyStats:
+    health: 0
+    enemyID: 1
+    position:
+    - 0
+    - 0
+    - 0
 --- !u!82 &-1007883840293958986
 AudioSource:
   m_ObjectHideFlags: 0
