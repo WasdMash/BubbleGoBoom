@@ -25,8 +25,6 @@ public class ShootingPattern_RegularGoon : MonoBehaviour
         
     }
 
-    void Shoot(){
-        enemyShooting.Shoot(amount, speed, 69727);
-    }
+    void Shoot() => enemyShooting.Shoot(amount, speed, 0);
 }
 
