@@ -5,6 +5,8 @@ using System.Collections;
 using System.Linq;
 using UnityEngine.InputSystem;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using System.Reflection;
 
 public class SaveStateManager : MonoBehaviour
 {
@@ -74,7 +76,7 @@ public class SaveStateManager : MonoBehaviour
         currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation, playerInventory, roomInfos, enemyInfos, chests);
 
         //string json = JsonUtility.ToJson(currentGameState); //This is the JSONUtility version - good for non-nested objects and non-gameObjects
-        var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore}; //Avoids normlisation reference issues
+        var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, ContractResolver = new NonPublicResolver()}; //Avoids normlisation reference issues - using nonPublicResolver to store protected variables too
         string json = JsonConvert.SerializeObject(currentGameState, Formatting.Indented, settings);
         //Will need to adjust file nme in case I want a save file for each user of the game/ each save state
         string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
@@ -147,4 +149,12 @@ public class SaveStateManager : MonoBehaviour
         }
     }
     public void LoadState(InputAction.CallbackContext context) => LoadState();
+}
+
+public class NonPublicResolver : DefaultContractResolver {
+    protected override List<MemberInfo> GetSerializableMembers(Type objectType) {
+        // Includes public, private, and protected instance fields
+        var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        return objectType.GetFields(flags).Cast<MemberInfo>().ToList();
+    }
 }
