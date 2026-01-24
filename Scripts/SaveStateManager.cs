@@ -1,7 +1,7 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
+using System;
 using System.Linq;
 using UnityEngine.InputSystem;
 using Newtonsoft.Json;
@@ -72,8 +72,10 @@ public class SaveStateManager : MonoBehaviour
         foreach(EnemyHealth e in enemies) { enemyInfos.Add(e.GetEnemyInfo()); }
         List<RoomData> roomInfos = new List<RoomData>();
         foreach(RoomHandler r in rooms) {roomInfos.Add(r.GetRoomData());}
+        List<ChestSaveData> chestInfos = new List<ChestSaveData>();
+        foreach(ChestData c in chests) { chestInfos.Add(c.GetSaveData()); }
 
-        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation, playerInventory, roomInfos, enemyInfos, chests);
+        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation, playerInventory, roomInfos, enemyInfos, chestInfos);
 
         //string json = JsonUtility.ToJson(currentGameState); //This is the JSONUtility version - good for non-nested objects and non-gameObjects
         var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, ContractResolver = new NonPublicResolver()}; //Avoids normlisation reference issues - using nonPublicResolver to store protected variables too
@@ -100,8 +102,8 @@ public class SaveStateManager : MonoBehaviour
             //Convert this thing into a GameState and then load its variables into the game, baby
                 //Don't forget to decrypt it, so we can actually understand it
             string jsonString = File.ReadAllText(path);
+            //This can cause issues if there are no chests yet loaded into the scene
             GameState loadedData = JsonConvert.DeserializeObject<GameState>(jsonString);
-            //GameState loadedData = JsonUtility.FromJson<GameState>(jsonString); //Old JSONUtility version
 
             //Loading in the appropiate data values
             health.SetPlayerHealth(loadedData.playerHealth);
@@ -135,15 +137,12 @@ public class SaveStateManager : MonoBehaviour
                 Instantiate(enemyTypes[enemy.GetID()], pos, Quaternion.identity);
             } 
             
-            foreach(ChestData chest in chests)
+            foreach(ChestSaveData chest in loadedData.chests)
             {
                 //Instantiate a chest object in its correct position
-                GameObject currentChest = chestTypes[chest.GetID()];
-                Vector3 comPos = chest.GetPosition();
-                pos[0] = comPos.x; pos[1] = comPos.y; pos[2] = comPos.z;
-                Instantiate(currentChest, pos, Quaternion.identity);
-                ChestData newChest = chest.GetComponent<ChestData>();
-                chest.copyTo(ref newChest);
+                GameObject currentChest = chestTypes[chest.chestID];
+                Instantiate(currentChest, chest.position, Quaternion.identity);
+                currentChest.GetComponent<ChestData>().LoadFromData(chest);
             }
 
         }

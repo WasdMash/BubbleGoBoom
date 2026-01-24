@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using System.Linq;
 using Newtonsoft.Json;
 
-[System.Serializable]
 [JsonObject(MemberSerialization.OptOut)] //Need this for Newtonsoft.JSON to acttually serialise everything
 
 public class ChestData: MonoBehaviour, IItemContainer
@@ -24,32 +19,31 @@ public class ChestData: MonoBehaviour, IItemContainer
     [SerializeField] protected Vector3 position;
     bool isPlayerInRange = false;
 
-    public void copyTo(ref ChestData other)
+    public ChestSaveData GetSaveData()
     {
-        other.chestID = chestID;
-        other.closedSprite = closedSprite;
-        other.openSprite = openSprite;
-        other.chestInventoryUI = chestInventoryUI;
-        other.opened = opened;
-        //For optimisation's sake, we aren't copying a thing if the chest hasn't been opened before
-        if (opened)
+        return new ChestSaveData
         {
-            for(int i = 0; i < other.inventoryItems.Length; i++)
-            {
-                other.inventoryItems[i] = inventoryItems[i];
-                other.inventoryStacks[i] = inventoryStacks[i];
-                other.inventoryGraphics[i] = inventoryGraphics[i];
-            }
-        }     
-        other.chestInteraction = chestInteraction;
-        other.position = position;
-
+            chestID = this.chestID,
+            opened = this.opened,
+            items = this.inventoryItems,
+            stacks = this.inventoryStacks,
+            position = transform.position
+        };
     }
+
+    public void LoadFromData(ChestSaveData data)
+    {
+        this.chestID = data.chestID;
+        this.opened = data.opened;
+        this.inventoryItems = data.items;
+        this.inventoryStacks = data.stacks;
+        if (opened) GetComponent<SpriteRenderer>().sprite = openSprite;
+    }
+
 
     public void Awake()
     {
         //Cannot find inactive objects - just have to hope that we can use something to find it when it needs to be found
-        OnEnable();
         position = gameObject.transform.position;
     }
 
@@ -119,9 +113,6 @@ public class ChestData: MonoBehaviour, IItemContainer
         opened = true;
     }
 
-    private void OnEnable() => chestInteraction.action.Enable();
-    private void OnDisable() => chestInteraction.action.Disable();
-
     void Update()
     {
         // Check if the player is nearby AND if they just pressed the button
@@ -150,3 +141,13 @@ public class ChestData: MonoBehaviour, IItemContainer
     public Vector3 GetPosition() {return position;}
 }
 
+[System.Serializable]
+[JsonObject(MemberSerialization.OptOut)] //Need this for Newtonsoft.JSON to acttually serialise everything
+public class ChestSaveData
+{
+    public int chestID;
+    public bool opened;
+    public LootableItem[] items;
+    public int[] stacks;
+    public Vector3 position;
+}

@@ -9634,7 +9634,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2257189633284569728}
   - component: {fileID: 4202301525149989791}
-  - component: {fileID: 5019638680970349311}
   - component: {fileID: 5019638680970349312}
   m_Layer: 0
   m_Name: GameManager
@@ -9643,19 +9642,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5019638680970349311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019638680970349310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe04189044f265f499024aeb70b6d1b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 0
 --- !u!114 &5019638680970349312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9779,6 +9765,10 @@ PrefabInstance:
     - target: {fileID: 2956170926358256463, guid: 1d0c2ac817918fe4aad638e909afbccf, type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147037326077542606, guid: 1d0c2ac817918fe4aad638e909afbccf, type: 3}
+      propertyPath: m_SortingOrder
+      value: 44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
