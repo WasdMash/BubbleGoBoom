@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
-using System.Linq;
 
 public class Inventory : MonoBehaviour, IItemContainer
 {

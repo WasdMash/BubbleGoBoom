@@ -48,6 +48,18 @@
             }
           },
           {
+            "id": "539cf69240deda33",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "Drawing 2026-03-25 15.52.03.excalidraw"
+            }
+          },
+          {
             "id": "bd2eaac7e14c0692",
             "type": "leaf",
             "state": {
@@ -220,13 +232,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "bd2eaac7e14c0692",
+  "active": "539cf69240deda33",
   "lastOpenFiles": [
+    "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md.meta",
+    "World building/The world map.md",
+    "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md",
+    "Features/Bugs.md",
     "Pasted image 20260124110907.png.meta",
     "Pasted image 20260124110907.png",
     "Pasted image 20260124110639.png.meta",
     "Pasted image 20260124110639.png",
-    "World building/The world map.md",
     "Character profiles/Character profile - Tom.md",
     "World building/The Clean Kingdom.md",
     "Untitled.base",
@@ -248,7 +263,6 @@
     "World building",
     "Character profiles",
     "Excalidraw/Head.png",
-    "Features/Bugs.md",
     "Features/Save state handling.md",
     "Features/Buffs.md",
     "Features/Things to work on.md",
@@ -256,7 +270,6 @@
     "Features/Inventory system planning.md",
     "Excalidraw",
     "Bugs.md.meta",
-    "Welcome.md.meta",
-    "Player.md.meta"
+    "Welcome.md.meta"
   ]
 }
