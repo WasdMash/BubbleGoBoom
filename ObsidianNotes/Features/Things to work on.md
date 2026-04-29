@@ -1,11 +1,12 @@
 - [ ] **Cutscene manager** - *would be quite helpful to research how this is implemented in other games*
-	- [ ] Should store the dialogue in like a CSV file or database or something
-		- [ ] For each paragraph, we should have:
+	- [x] Stored the dialogue in serialiable classes, which will be stored in a relevant folder
+		- Much better than using a CSV file which would need to be constantly opened and traversed in order to access relevant dialogue
+		- [x] For each paragraph, we should have:
 			- Something to note when the dialogue is triggered
 			- Which conversation it is a part of
 			- The name of the character speaking
 			- The sprite of the character speaking
-	- [ ] I want a typing effect as the characters speak like in other sprite games
+	- [x] I want a typing effect as the characters speak like in other sprite games
 		- [ ] ![[Drawing 2025-12-16 18.43.17.excalidraw]]
 - [ ] **Active weapon slot**
 	- [ ] How to actually store it and bind its actions to a button shouldn't be hard to figure out?
@@ -23,9 +24,9 @@
 			- [ ] We don't care about what's in unopened chests - their contents can be generated at runtime
 		- [ ] Player position in dungeon
 		- [ ] Dungeon layout
-- [ ] Chests
-	- [ ] Storing items within them permanently may become a key mechanic of the game
-	- [ ] ![[Inventory system planning]]
+- [x] Chests
+	- [x] Storing items within them permanently may become a key mechanic of the game
+	- [x] ![[Inventory system planning]]
 	- [ ] This relies on how I can store the procedurally generated dungeon in memory without causing lag
 		- [ ] Figure out how to permanently store this data of dungeon
 			- [ ] Can be used to reload the game

@@ -8,58 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f11b905c094a3bc9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "World building/The story.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "The story"
-            }
-          },
-          {
-            "id": "83837791ff12b603",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "World building/The Clean Kingdom.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "The Clean Kingdom"
-            }
-          },
-          {
-            "id": "f2bf5a371cfc5e93",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "World building/The world map.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "The world map"
-            }
-          },
-          {
-            "id": "539cf69240deda33",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2026-03-25 15.52.03.excalidraw"
-            }
-          },
-          {
             "id": "bd2eaac7e14c0692",
             "type": "leaf",
             "state": {
@@ -74,21 +22,35 @@
             }
           },
           {
-            "id": "7008da1af0ba6a69",
+            "id": "d981593ccb32e907",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Character profiles/Character profile - King Olay.md",
+                "file": "Features/IMPORTANT CORE FEATURES.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Character profile - King Olay"
+              "title": "IMPORTANT CORE FEATURES"
+            }
+          },
+          {
+            "id": "2d69f3b5ef18115d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Features/Things to work on.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Things to work on"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -232,12 +194,14 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "539cf69240deda33",
+  "active": "2d69f3b5ef18115d",
   "lastOpenFiles": [
-    "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md.meta",
-    "World building/The world map.md",
-    "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md",
+    "Features/IMPORTANT CORE FEATURES.md",
     "Features/Bugs.md",
+    "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md",
+    "World building/The world map.md",
+    "World building/The story.md",
+    "Excalidraw/Drawing 2026-03-25 15.52.03.excalidraw.md.meta",
     "Pasted image 20260124110907.png.meta",
     "Pasted image 20260124110907.png",
     "Pasted image 20260124110639.png.meta",
@@ -246,7 +210,6 @@
     "World building/The Clean Kingdom.md",
     "Untitled.base",
     "Character profiles/Character profile - King Olay.md",
-    "World building/The story.md",
     "World building/Sequel ideas.md",
     "Excalidraw/Drawing 2025-12-16 18.43.17.excalidraw.md",
     "Enemies/BigSlime.png",
@@ -257,7 +220,6 @@
     "Character profiles/Enemies.md",
     "Excalidraw/KingOlay.png",
     "Features/Item slots.md",
-    "Features/IMPORTANT CORE FEATURES.md",
     "Bubble Go Boom.md",
     "Features",
     "World building",
@@ -269,7 +231,6 @@
     "Features/Ideas.md",
     "Features/Inventory system planning.md",
     "Excalidraw",
-    "Bugs.md.meta",
-    "Welcome.md.meta"
+    "Bugs.md.meta"
   ]
 }

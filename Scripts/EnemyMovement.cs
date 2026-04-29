@@ -25,7 +25,8 @@ public class Enemy2 : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        //Don't want the enemies moving when dialogue is happening (should probably do the same for opening chests but hey, item management)
+        if (player != null && !DialogueManager.Instance.isDialogueActive)
         {
             Vector3 direction = (player.position - transform.position).normalized;
             direction.z = 0f;

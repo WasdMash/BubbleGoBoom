@@ -47,15 +47,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Read the processed input from the manager
-        Vector2 moveInput = InputManager.Instance.MovementInput;
+        //Neither the player nor enemies should be moving during dialogue - should do the same for cutscenes
+        if(!DialogueManager.Instance.isDialogueActive)
+        {
+            // Read the processed input from the manager
+            Vector2 moveInput = InputManager.Instance.MovementInput;
+            //Get player movement
+            anim.SetBool("run", moveInput.magnitude != 0);
+            if(dashTimer > 0) dashTimer -= Time.deltaTime;
+        }
         //Vector2 mousePos = InputManager.Instance.LookInput;
         Vector2 mousePos = Mouse.current.position.ReadValue();
-
-        //Get player movement
-        anim.SetBool("run", moveInput.magnitude != 0);
-        if(dashTimer > 0) dashTimer -= Time.deltaTime;
-
+        
         //Implement player dash
        if(Input.GetButtonDown("Jump") && dashTimer <= 0){
             //We need to get a cooldown and a layer for projectiles
