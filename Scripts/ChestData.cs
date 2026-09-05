@@ -38,7 +38,8 @@ public class ChestData: MonoBehaviour, IItemContainer
         opened = data.opened;
         inventoryItems = data.itemIds.Select(id => string.IsNullOrEmpty(id) ? null : LootableItemDatabase.Instance.GetById(id)).ToArray();
         inventoryStacks = data.stacks;
-        if (opened) GetComponent<SpriteRenderer>().sprite = openSprite;
+        chestInventoryUI = GameObject.FindWithTag("ChestData"); //needs this to show the UI when the chest is activated - not there by default
+        GetComponent<SpriteRenderer>().sprite = opened ? openSprite : closedSprite;
     }
 
 
