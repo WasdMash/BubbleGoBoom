@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Newtonsoft.Json;
+using System.Linq;
 
 [JsonObject(MemberSerialization.OptOut)] //Need this for Newtonsoft.JSON to acttually serialise everything
 
@@ -25,7 +26,7 @@ public class ChestData: MonoBehaviour, IItemContainer
         {
             chestID = this.chestID,
             opened = this.opened,
-            items = this.inventoryItems,
+            itemIds = this.inventoryItems.Select(i => i != null ? i.getId() : null).ToArray(),
             stacks = this.inventoryStacks,
             position = transform.position
         };
@@ -33,10 +34,10 @@ public class ChestData: MonoBehaviour, IItemContainer
 
     public void LoadFromData(ChestSaveData data)
     {
-        this.chestID = data.chestID;
-        this.opened = data.opened;
-        this.inventoryItems = data.items;
-        this.inventoryStacks = data.stacks;
+        chestID = data.chestID;
+        opened = data.opened;
+        inventoryItems = data.itemIds.Select(id => string.IsNullOrEmpty(id) ? null : LootableItemDatabase.Instance.GetById(id)).ToArray();
+        inventoryStacks = data.stacks;
         if (opened) GetComponent<SpriteRenderer>().sprite = openSprite;
     }
 
@@ -147,7 +148,7 @@ public class ChestSaveData
 {
     public int chestID;
     public bool opened;
-    public LootableItem[] items;
+    public string[] itemIds;
     public int[] stacks;
     public Vector3 position;
 }

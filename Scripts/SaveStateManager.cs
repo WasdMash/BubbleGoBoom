@@ -34,6 +34,7 @@ public class SaveStateManager : MonoBehaviour
     [SerializeField] GameObject[] chestTypes;
     HealthManager health;
     GameManager game;
+    private JsonSerializerSettings settings;
     float[] playerLocation = new float[2];
     InventoryInfo playerInventory;
     int[] playerInventoryStack = new int[4];
@@ -53,6 +54,7 @@ public class SaveStateManager : MonoBehaviour
 
     public void SaveState()
     {
+        Debug.Log("It's time to save data, baby!");
         //We only care about tracking these values when it is actually time to save
             //Anything else will just itnroduce meaningless lag and bottleneck performance
         Vector3 playerPos = FindObjectOfType<PlayerMovement>().gameObject.transform.position;
@@ -78,7 +80,7 @@ public class SaveStateManager : MonoBehaviour
         currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation, playerInventory, roomInfos, enemyInfos, chestInfos);
 
         //string json = JsonUtility.ToJson(currentGameState); //This is the JSONUtility version - good for non-nested objects and non-gameObjects
-        var settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, ContractResolver = new NonPublicResolver()}; //Avoids normlisation reference issues - using nonPublicResolver to store protected variables too
+        settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, ContractResolver = new NonPublicResolver()}; //Avoids normlisation reference issues - using nonPublicResolver to store protected variables too
         string json = JsonConvert.SerializeObject(currentGameState, Formatting.Indented, settings);
         //Will need to adjust file nme in case I want a save file for each user of the game/ each save state
         string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
@@ -94,6 +96,7 @@ public class SaveStateManager : MonoBehaviour
     public void SaveState(InputAction.CallbackContext context) => SaveState();
     public void LoadState()
     {
+        Debug.Log("It's time to load data, baby!");
         //Loading our player's vital info from PlayerPrefs into our current game state
         string path = Path.Combine(Application.persistentDataPath, FILE_NAME);
 
@@ -103,12 +106,19 @@ public class SaveStateManager : MonoBehaviour
                 //Don't forget to decrypt it, so we can actually understand it
             string jsonString = File.ReadAllText(path);
             //This can cause issues if there are no chests yet loaded into the scene
-            GameState loadedData = JsonConvert.DeserializeObject<GameState>(jsonString);
+            GameState loadedData = JsonConvert.DeserializeObject<GameState>(jsonString, settings);
+
+            foreach (var room in FindObjectsByType<RoomHandler>(FindObjectsSortMode.None)) Destroy(room.gameObject);
+            foreach (var enemy in FindObjectsByType<EnemyHealth>(FindObjectsSortMode.None)) Destroy(enemy.gameObject);
+            foreach (var chest in FindObjectsByType<ChestData>(FindObjectsSortMode.None)) Destroy(chest.gameObject);
 
             //Loading in the appropiate data values
             health.SetPlayerHealth(loadedData.playerHealth);
             game.SetGameScore(loadedData.currentScore);
             for(int i=0;i<2;i++) {playerLocation[i] = loadedData.currentPlayerLocation[i];}
+
+            PlayerMovement player = FindObjectOfType<PlayerMovement>();
+            player.gameObject.transform.position = new Vector3(playerLocation[0], playerLocation[1], player.gameObject.transform.position.z);
             
             //Must work on syncing info between the active Inventory object and its InventoryInfo object
             playerInventory = FindObjectOfType<Inventory>().getInfo();
@@ -116,16 +126,16 @@ public class SaveStateManager : MonoBehaviour
 
             Vector3 pos = new Vector3();
             //Will need to instantiate the rooms and enemies in their correct positions
-            foreach(RoomData room in loadedData.rooms)
+            foreach (RoomData room in loadedData.rooms)
             {
                 //Cool, we've found the room type that we want to instantiate
                 GameObject currentRoom = roomPrefabs[room.GetID()];
-                float[] comPos = room.GetPosition();      
-                for(int i=0;i<3;i++) {pos[i] = comPos[i];}
-                Instantiate(currentRoom, pos, currentRoom.transform.rotation);
+                float[] comPos = room.GetPosition();
+                for (int i = 0; i < 3; i++) { pos[i] = comPos[i]; }
                 //Manually assign its RoomData values from room to restore the room fully to its proper form
-                RoomData newRoom = currentRoom.GetComponent<RoomData>();
-                room.copyTo(ref newRoom); //Copying the values over so nothing is lost
+                GameObject instantiated = Instantiate(currentRoom, pos, currentRoom.transform.rotation);
+                RoomHandler handler = instantiated.GetComponent<RoomHandler>();
+                handler.LoadFromData(room);//Copying the values over so nothing is lost
             }
 
             //Ignore the health - I want to punish users for logging out by resetting health
@@ -141,8 +151,8 @@ public class SaveStateManager : MonoBehaviour
             {
                 //Instantiate a chest object in its correct position
                 GameObject currentChest = chestTypes[chest.chestID];
-                Instantiate(currentChest, chest.position, Quaternion.identity);
-                currentChest.GetComponent<ChestData>().LoadFromData(chest);
+                GameObject instantiatedChest = Instantiate(currentChest, chest.position, Quaternion.identity); // this captures the instance instead of the immutable prefab
+                instantiatedChest.GetComponent<ChestData>().LoadFromData(chest); // bruh, I was using currentChest (the prefab) before
             }
 
         }

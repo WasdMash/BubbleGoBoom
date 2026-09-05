@@ -442,7 +442,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""binding"",
                     ""id"": ""702cad2b-92be-4df8-a885-b0e765015dfc"",
-                    ""path"": ""<Gamepad>/select"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

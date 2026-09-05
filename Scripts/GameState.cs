@@ -1,4 +1,5 @@
 using UnityEngine;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -19,14 +20,19 @@ public class GameState
     //Constructor of the GameState class
         //If this object fails to serialise, it could be due to issues of having Animation and other non-pure classes
         //in LootableItem class
-    public GameState(int health, int score, float[] location, InventoryInfo inventory, List<RoomData> rooms, List<EnemyInfo> enemies, List<ChestSaveData> chests)
+    [JsonConstructor]
+    public GameState(int playerHealth, int currentScore, float[] currentPlayerLocation, InventoryInfo inventory, List<RoomData> rooms, List<EnemyInfo> enemies, List<ChestSaveData> chests)
     {
-        playerHealth = health;
-        currentScore = score;
-        for(int i=0;i<2;i++){ currentPlayerLocation[i] = location[i];}
-        //Copying the values of the inventory over to the game state
-        inventory.copyTo(ref this.inventory);
-        //Newtonsoft.JSON throws a hissy fit if any of these are empty, due to them not needing to be saved
+        this.playerHealth = playerHealth;
+        this.currentScore = currentScore;
+
+        if (currentPlayerLocation != null)
+            for (int i = 0; i < 2 && i < currentPlayerLocation.Length; i++)
+                this.currentPlayerLocation[i] = currentPlayerLocation[i];
+
+        if (inventory != null)
+            inventory.copyTo(ref this.inventory);
+
         this.rooms = rooms ?? new List<RoomData>();
         this.enemies = enemies ?? new List<EnemyInfo>();
         this.chests = chests ?? new List<ChestSaveData>();

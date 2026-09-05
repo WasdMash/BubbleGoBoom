@@ -10,6 +10,7 @@ using System;
 public class LootableItem : ScriptableObject, IComparable<LootableItem>
 {
     [Header("Item properties")]
+    [SerializeField] protected string itemId;
     [SerializeField] protected string itemName;
 
     [Header("Visible things")]
@@ -31,6 +32,15 @@ public class LootableItem : ScriptableObject, IComparable<LootableItem>
 
     public Sprite getSprite() {return itemSprite;}
     public string getName() {return itemName;}
+    public string getId() { return itemId; }
+
+    #if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(itemId))
+            Debug.LogWarning($"{name} has no itemId set!", this);
+    }
+    #endif
 
     public virtual void useItem()
     {

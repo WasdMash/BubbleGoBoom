@@ -65,18 +65,7 @@ public class Gun : MonoBehaviour {
 		if (allowButtonHold)  shooting = InputManager.Instance.fireAction.IsPressed();
 		else shooting = InputManager.Instance.fireAction.WasPressedThisFrame();
 		
-		//Triggering the reload functions
-		if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
-		{
-			Reload();
-			Debug.Log("You are quite impulsive, aren't you?");
-		}
-		
-		if (readyToShoot && shooting && !BulletsLeftAreGreaterThanZero && !reloading)
-		{
-		 	Reload();
-		 	Debug.Log("Ran out of bullets, fool");
-		}
+		if (readyToShoot && shooting && !BulletsLeftAreGreaterThanZero && !reloading) Reload();
 		
 		//If I am able to shoot
 		if (readyToShoot && shooting && !reloading && BulletsLeftAreGreaterThanZero)

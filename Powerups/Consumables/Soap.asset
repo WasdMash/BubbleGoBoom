@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83991e8a594e3642bc9812e76fb5354, type: 3}
   m_Name: Soap
   m_EditorClassIdentifier: 
+  itemId: 7
   itemName: Soap
   anim: {fileID: 0}
   itemSprite: {fileID: 21300000, guid: db7827fbdf421a24c9114b7450e9e585, type: 3}

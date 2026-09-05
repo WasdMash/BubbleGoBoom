@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51d56c1fd3f10542adc42796391e1d8, type: 3}
   m_Name: Gun
   m_EditorClassIdentifier: 
+  itemId: 1
   itemName: BasicGun
   anim: {fileID: 0}
   itemSprite: {fileID: 21300000, guid: 6c5cb36a90bb54945a7ee61c652425df, type: 3}

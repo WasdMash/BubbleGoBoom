@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Inventory : MonoBehaviour, IItemContainer
 {
@@ -11,12 +12,25 @@ public class Inventory : MonoBehaviour, IItemContainer
     public InventorySlot[] inventoryGraphics = new InventorySlot[4];//default placeholder for now
     public Sprite nullSprite; //This is the placeholder sprite for each inventory slot, just to prevent errors
     //I want a visual Minecraft-like box to show current inventory
-
+    Vector3 originalPos;
+    [Range(0f, 200f)]
+    [SerializeField] float downShift; //value which detemrines how far out of view the inventory slides out of the 
+    [Range(0f, 1f)]
+    [SerializeField] float downShiftTime; //how long it takes for the UI to move out of the way
     public void Awake()
     {
         info = new InventoryInfo();
+        originalPos = transform.position;
         inventoryGraphics = GetComponentsInChildren<InventorySlot>();
         RefreshUI();
+    }
+
+    //Quick fix to get the UI out ot the way when aiming downwards, especially on controller
+    void Update()
+    {
+        if(InputManager.Instance.LookInput.magnitude > 0.9f) transform.DOMove(originalPos - new Vector3(0f,downShift,0f), downShiftTime);
+        else if (transform.position != originalPos) transform.DOMove(originalPos, downShiftTime);
+        
     }
     public LootableItem GetItem(int index)
     {

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51d56c1fd3f10542adc42796391e1d8, type: 3}
   m_Name: SanitiserShotgun
   m_EditorClassIdentifier: 
+  itemId: 4
   itemName: SanitiserShotgun
   anim: {fileID: 0}
   itemSprite: {fileID: 0}

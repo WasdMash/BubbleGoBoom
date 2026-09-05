@@ -66,7 +66,7 @@ public class HealthManager : MonoBehaviour
 
     //Getters and setters, baby for encapsulation
     public int GetPlayerHealth() {return playerHealth;}
-    public void SetPlayerHealth(int newHealth) {playerHealth = newHealth;}
+    public void SetPlayerHealth(int newHealth) {playerHealth = newHealth; UIChecks();}
 
     public void HealPlayer(int manna)
     {
