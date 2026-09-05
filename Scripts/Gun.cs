@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -46,11 +47,13 @@ public class Gun : MonoBehaviour {
 	void MyInput()
 	{
 		// Get mouse position in world space
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		Vector3 mousePos = InputManager.Instance.LookInput;
 		mousePos.z = 0;  // Ensure the z value is 0 since we're working in 2D
 
+		Vector3 directionToMouse;
 		// Calculate direction from the player to the mouse
-		Vector3 directionToMouse = mousePos - playerTransform.position;
+		if(InputManager.Instance.IsGamepad) directionToMouse = mousePos; //Normalised vector can be directly used for cosine angle calculations
+		else directionToMouse = mousePos - playerTransform.position;
 
 		// Calculate the angle between the gun's current forward direction and the direction to the mouse
 		float angle = Vector3.SignedAngle(Vector3.up, directionToMouse, Vector3.forward);
@@ -59,8 +62,8 @@ public class Gun : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(0, 0, angle+180);
 
 		//Check if I can hold fire button (not really for revolvers)
-		if (allowButtonHold)  shooting = Input.GetMouseButton(0);
-		else shooting = Input.GetMouseButtonDown(0);
+		if (allowButtonHold)  shooting = InputManager.Instance.fireAction.IsPressed();
+		else shooting = InputManager.Instance.fireAction.WasPressedThisFrame();
 		
 		//Triggering the reload functions
 		if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !reloading)
@@ -86,11 +89,9 @@ public class Gun : MonoBehaviour {
 	public void Shoot()
 	{
 		readyToShoot = false;
-        //Need to get the position of mouse in world to aim the bullets
-        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		
 		//Use a raycast to get location of bullet target
-		RaycastHit2D hit = Physics2D.Raycast(attackPoint.position - 0.2f*attackPoint.transform.up, mouseWorldPos, 40f);
+		RaycastHit2D hit = Physics2D.Raycast(attackPoint.position - 0.2f*attackPoint.transform.up, InputManager.Instance.LookInput, 40f);
         if(hit && hit.collider.name != "Player"){
             //Checks if the ray hit something
             //Calculate direction from place of attack to targetpoint

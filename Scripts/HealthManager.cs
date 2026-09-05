@@ -70,7 +70,7 @@ public class HealthManager : MonoBehaviour
 
     public void HealPlayer(int manna)
     {
-        if (playerHealth < (maxPlayerHealth - manna)) playerHealth += manna;
+        if (playerHealth <= (maxPlayerHealth - manna)) playerHealth += manna;
         UIChecks();
     }
 

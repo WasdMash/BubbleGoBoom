@@ -27,11 +27,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Camera settings")]
     [Range(0f, 1f)]
     [SerializeField] float screenPercentage; //controls how tightly one can view their player on screen
-    [SerializeField] Vector3 newCameraTarget;
-    [SerializeField] float cameraSpeed;
+    [Range(0f,1f)]
+    [SerializeField] float deadzone;
+    Vector3 newCameraTarget;
+    [SerializeField] float cameraSpeed, gamepadSpeed;
     [SerializeField] Camera main_Camera;
-    [SerializeField] float cameraWidth, cameraHeight;
+    float cameraWidth, cameraHeight;
     [SerializeField] float offsetMultiplier = 0.9f;
+    float centreX, centreY,x,y;
+    Vector2 virtualAimOffset;
 
     void Start()
     {
@@ -43,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
         cameraWidth = cameraHeight * Camera.main.aspect;   // Total width of the camera's view based on the aspect ratio
         Cursor.lockState = CursorLockMode.Confined;
         dashTimer = dashCooldown;
+        centreX = Screen.width / 2f;
+        centreY = Screen.height / 2f;
     }
 
     void Update()
@@ -56,8 +62,6 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("run", moveInput.magnitude != 0);
             if(dashTimer > 0) dashTimer -= Time.deltaTime;
         }
-        //Vector2 mousePos = InputManager.Instance.LookInput;
-        Vector2 mousePos = Mouse.current.position.ReadValue();
         
         //Implement player dash
        if(Input.GetButtonDown("Jump") && dashTimer <= 0){
@@ -70,14 +74,35 @@ public class PlayerMovement : MonoBehaviour
         
         // Calculate new camera target position
         Vector3 playerTransform = gameObject.transform.position;
-        float centreX = Screen.width / 2;
-        float centreY = Screen.height / 2;
+        float x = virtualAimOffset.x, y = virtualAimOffset.y; // default: keep last value
 
-        //Flipping the sprite to face the direction it's facing
-        float x = (mousePos.x - centreX)/(Screen.width / 2);
-        float y = (mousePos.y - centreY)/(Screen.height / 2);
-        if(x > 0) GetComponent<SpriteRenderer>().flipX = true;
-        else GetComponent<SpriteRenderer>().flipX = false;
+        if (InputManager.Instance.IsGamepad)
+        {
+            Vector2 look = InputManager.Instance.LookInput;
+            float magnitude = look.magnitude;
+
+            if (magnitude > deadzone)
+            {
+                // Rescale so input starts at 0 right past the deadzone, not at deadzone value
+                float adjustedMagnitude = (magnitude - deadzone) / (1f - deadzone);
+                Vector2 adjustedLook = look.normalized * adjustedMagnitude;
+
+                virtualAimOffset += adjustedLook * gamepadSpeed * Time.deltaTime;
+                virtualAimOffset = Vector2.ClampMagnitude(virtualAimOffset, 1f);
+            }
+            //Lowkey, I think that the camera sticking to a corner feels way more annoying on controller than keyboard and mouse
+            else virtualAimOffset = Vector2.MoveTowards(virtualAimOffset, Vector2.zero, gamepadSpeed * Time.deltaTime);
+            
+            x = virtualAimOffset.x;
+            y = virtualAimOffset.y;
+        }
+        else
+        {
+            Vector2 mousePos = Mouse.current.position.ReadValue();      
+            x = (mousePos.x - centreX) / (Screen.width / 2f);
+            y = (mousePos.y - centreY) / (Screen.height / 2f);
+            virtualAimOffset = new Vector2(x, y); // keep in sync if they switch devices mid-play
+        }
 
         // Determine offset amount
         Vector3 offset = new Vector3(x, y, 0f) *  offsetMultiplier;
