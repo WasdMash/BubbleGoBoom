@@ -77,7 +77,7 @@ public class SaveStateManager : MonoBehaviour
         List<ChestSaveData> chestInfos = new List<ChestSaveData>();
         foreach(ChestData c in chests) { chestInfos.Add(c.GetSaveData()); }
 
-        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), playerLocation, playerInventory, roomInfos, enemyInfos, chestInfos);
+        currentGameState = new GameState(health.GetPlayerHealth(), game.GetGameScore(), game.GetWavesSurvived(), playerLocation, playerInventory, roomInfos, enemyInfos, chestInfos);
 
         //string json = JsonUtility.ToJson(currentGameState); //This is the JSONUtility version - good for non-nested objects and non-gameObjects
         settings = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, ContractResolver = new NonPublicResolver()}; //Avoids normlisation reference issues - using nonPublicResolver to store protected variables too
@@ -115,6 +115,7 @@ public class SaveStateManager : MonoBehaviour
             //Loading in the appropiate data values
             health.SetPlayerHealth(loadedData.playerHealth);
             game.SetGameScore(loadedData.currentScore);
+            game.SetWavesSurvived(loadedData.wavesSurived);
             for(int i=0;i<2;i++) {playerLocation[i] = loadedData.currentPlayerLocation[i];}
 
             PlayerMovement player = FindObjectOfType<PlayerMovement>();

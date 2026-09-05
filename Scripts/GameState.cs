@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class GameState
 {
     public int playerHealth;
+    public int wavesSurived;
     public int currentScore;
     //It has been advised to save Vector2s as a float[2] for easier serialisation
         //I'll do that iff I'm having any issues
@@ -21,10 +22,11 @@ public class GameState
         //If this object fails to serialise, it could be due to issues of having Animation and other non-pure classes
         //in LootableItem class
     [JsonConstructor]
-    public GameState(int playerHealth, int currentScore, float[] currentPlayerLocation, InventoryInfo inventory, List<RoomData> rooms, List<EnemyInfo> enemies, List<ChestSaveData> chests)
+    public GameState(int playerHealth, int currentScore, int wavesSurived, float[] currentPlayerLocation, InventoryInfo inventory, List<RoomData> rooms, List<EnemyInfo> enemies, List<ChestSaveData> chests)
     {
         this.playerHealth = playerHealth;
         this.currentScore = currentScore;
+        this.wavesSurived = wavesSurived;
 
         if (currentPlayerLocation != null)
             for (int i = 0; i < 2 && i < currentPlayerLocation.Length; i++)

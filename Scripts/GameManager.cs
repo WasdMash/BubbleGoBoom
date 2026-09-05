@@ -155,6 +155,8 @@ public class GameManager : MonoBehaviour
     public void ChangeScore(int amount){ gameScore += amount; }
 
     public int GetGameScore() {return gameScore;}
+    public int GetWavesSurvived() {return waves;}
+    public void SetWavesSurvived(int newWaves) {waves = newWaves;}
     public void SetGameScore(int newScore) {gameScore = newScore;}
 
     public static LootableItem[] GetPossibleItems() {return possibleItemsToDrop;}
