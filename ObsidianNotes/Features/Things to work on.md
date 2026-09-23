@@ -1,4 +1,5 @@
 - [ ] **Cutscene manager** - *would be quite helpful to research how this is implemented in other games*
+	- [ ] Should probably find a way to pause the enemies in background only when cutscenes and dialogue are playing
 	- [x] Stored the dialogue in serialiable classes, which will be stored in a relevant folder
 		- Much better than using a CSV file which would need to be constantly opened and traversed in order to access relevant dialogue
 		- [x] For each paragraph, we should have:

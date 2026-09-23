@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     float cameraWidth, cameraHeight;
     [SerializeField] float offsetMultiplier = 0.9f;
     float centreX, centreY,x,y;
-    Vector2 virtualAimOffset;
+    public Vector2 virtualAimOffset;
 
     void Start()
     {

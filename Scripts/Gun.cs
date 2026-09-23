@@ -24,6 +24,7 @@ public class Gun : MonoBehaviour {
 	
 	[SerializeField]
 	bool shooting, readyToShoot, reloading, BulletsLeftAreGreaterThanZero;
+	[SerializeField] Vector2 lookInput;
 	
 	[SerializeField] Transform attackPoint;
 	
@@ -42,18 +43,13 @@ public class Gun : MonoBehaviour {
 	void Awake () {
 		bulletsLeft = magazineSize;
 		readyToShoot = true;
+		
 	}
 	
 	void MyInput()
 	{
 		// Get mouse position in world space
-		Vector3 mousePos = InputManager.Instance.LookInput;
-		mousePos.z = 0;  // Ensure the z value is 0 since we're working in 2D
-
-		Vector3 directionToMouse;
-		// Calculate direction from the player to the mouse
-		if(InputManager.Instance.IsGamepad) directionToMouse = mousePos; //Normalised vector can be directly used for cosine angle calculations
-		else directionToMouse = mousePos - playerTransform.position;
+		Vector3 directionToMouse = FindFirstObjectByType<PlayerMovement>().virtualAimOffset;
 
 		// Calculate the angle between the gun's current forward direction and the direction to the mouse
 		float angle = Vector3.SignedAngle(Vector3.up, directionToMouse, Vector3.forward);

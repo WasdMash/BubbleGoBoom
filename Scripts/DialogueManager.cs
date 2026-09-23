@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = true;
         animator.Play("show");
+        Time.timeScale = 0f; //It's time to freeze all enemies - you get a break
         lines.Clear(); //In case there are any leftover lines from the previous conversation
  
         foreach (DialogueLine dialogueLine in dialogue.dialogueLines)
@@ -59,7 +60,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in dialogueLine.line.ToCharArray())
         {
             dialogueArea.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSecondsRealtime(typingSpeed);
         }
     }
  
@@ -67,5 +68,6 @@ public class DialogueManager : MonoBehaviour
     {
         isDialogueActive = false;
         animator.Play("hide");
+        Time.timeScale = 1f; //undoes the time freezing - don't want enemies moving when you can't
     }
 }
