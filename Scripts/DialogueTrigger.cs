@@ -2,38 +2,22 @@ using System.Collections.Generic;
 using UnityEngine;
  
 [System.Serializable]
-public class DialogueCharacter
-{
-    public string name;
-    public Sprite icon;
-}
- 
-[System.Serializable]
-public class DialogueLine
-{
-    public DialogueCharacter character;
-    [TextArea(3, 10)]
-    public string line;
-}
- 
-[System.Serializable]
 public class Dialogue
 {
-    public List<DialogueLine> dialogueLines = new List<DialogueLine>();
+    [Tooltip("This is the name of the CSV file for this relevant dialogue")]
+    [SerializeField] string dialogueFileName;
+    //As said in Obsidian, each line is an array of [iconNumber, dialogueLine]
+    public List<string[]> dialogueLines = new List<string[]>();
+    public string getFile() {return dialogueFileName;}
 }
  
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
- 
-    public void TriggerDialogue()
-    {
-        DialogueManager.Instance.StartDialogue(dialogue);
-    }
- 
+    
     //The player needs to enter a trigger to start the dialogue - use wisely
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player") TriggerDialogue();
+        if(collision.tag == "Player") DialogueManager.Instance.StartDialogue(dialogue);
     }
 }

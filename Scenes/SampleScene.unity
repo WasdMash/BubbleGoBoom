@@ -6248,6 +6248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9463e4abc991f7dacbb2a17be6076da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterHeads:
+  - {fileID: 21300000, guid: 7bcc1fd949c1d9544a469f76517c5865, type: 3}
+  - {fileID: 21300000, guid: f2276631b3a217843b26c7b3411c416f, type: 3}
+  - {fileID: 21300000, guid: e8fdc5a955944d94a87e26bd7aaa39dd, type: 3}
+  - {fileID: 21300000, guid: 044a1218e2b91484888e18f23c933972, type: 3}
   characterIcon: {fileID: 1898215514}
   characterName: {fileID: 282706647}
   dialogueArea: {fileID: 283691166}
@@ -6424,19 +6429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    dialogueLines:
-    - character:
-        name: Player
-        icon: {fileID: 21300000, guid: 7bcc1fd949c1d9544a469f76517c5865, type: 3}
-      line: Man, a new room! How sick is this?
-    - character:
-        name: Enemy
-        icon: {fileID: 21300000, guid: 0c223d7bdadc77f41bb6469e7c327f60, type: 3}
-      line: You're not ready for us, big man!
-    - character:
-        name: Player
-        icon: {fileID: 21300000, guid: 7bcc1fd949c1d9544a469f76517c5865, type: 3}
-      line: Yeah, I am. Bring it!
+    dialogueFileName: 
 --- !u!4 &1323042335
 Transform:
   m_ObjectHideFlags: 0

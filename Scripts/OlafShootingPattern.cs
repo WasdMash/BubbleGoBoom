@@ -1,11 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class OlafShootingPattern : MonoBehaviour
 {
-
     EnemyShooting enemyShooting;
     [Range(1f, 10f)]
     [SerializeField] float bulletSpeedMultiplier;
@@ -18,14 +15,11 @@ public class OlafShootingPattern : MonoBehaviour
             Debug.Log("No enemy shooting script found");
             Application.Quit();
         }
-
         StartAttackPattern();
     }
 
 
-    void StartAttackPattern(){
-        StartCoroutine(AttackPattern());
-    }
+    void StartAttackPattern(){ StartCoroutine(AttackPattern()); }
 
     private IEnumerator AttackPattern(){
         int choice = Random.Range(0, 4);
@@ -53,8 +47,6 @@ public class OlafShootingPattern : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
         StartAttackPattern();
-
-
     }
 
 
