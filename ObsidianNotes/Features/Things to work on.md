@@ -1,14 +1,4 @@
-- [ ] **Cutscene manager** - *would be quite helpful to research how this is implemented in other games*
-	- [ ] Should probably find a way to pause the enemies in background only when cutscenes and dialogue are playing
-	- [x] Stored the dialogue in serialiable classes, which will be stored in a relevant folder
-		- Much better than using a CSV file which would need to be constantly opened and traversed in order to access relevant dialogue
-		- [x] For each paragraph, we should have:
-			- Something to note when the dialogue is triggered
-			- Which conversation it is a part of
-			- The name of the character speaking
-			- The sprite of the character speaking
-	- [x] I want a typing effect as the characters speak like in other sprite games
-		- [ ] ![[Drawing 2025-12-16 18.43.17.excalidraw]]
+
 - [ ] **Active weapon slot**
 	- [ ] How to actually store it and bind its actions to a button shouldn't be hard to figure out?
 - [ ] Actually creating a choice of weapons and consumables
@@ -18,18 +8,10 @@
 	- [ ] Tracking the boss' health and opening the triggers to doors when their health is 0
 - [ ] **Implementing save states in the game**
 	- [ ] What must be known at any given time to save the game in a meaningful way?
-		- [ ] Player health
-		- [ ] Player's inventory of items
-		- [ ] The number of waves survived
-		- [ ] Items in opened chests
+		- [x] Player health
+		- [x] Player's inventory of items
+		- [x] The number of waves survived
+		- [x] Items in opened chests
 			- [ ] We don't care about what's in unopened chests - their contents can be generated at runtime
-		- [ ] Player position in dungeon
+		- [x] Player position in dungeon
 		- [ ] Dungeon layout
-- [x] Chests
-	- [x] Storing items within them permanently may become a key mechanic of the game
-	- [x] ![[Inventory system planning]]
-	- [ ] This relies on how I can store the procedurally generated dungeon in memory without causing lag
-		- [ ] Figure out how to permanently store this data of dungeon
-			- [ ] Can be used to reload the game
-- [x] Implementing an input buffer - **not totally necessary but a huge ease-of-life improvement**
-- [ ] 
