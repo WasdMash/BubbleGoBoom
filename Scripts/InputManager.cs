@@ -39,10 +39,25 @@ public class InputManager : MonoBehaviour
             OnLookPerformed?.Invoke(ctx);
         };
         inputs.Gameplay.EquipItem.performed += FindObjectOfType<Inventory>().useEquippedItem;
+
+        //Will also need to bind menu actions here as well
+        inputs.Menu.Select.performed += FindObjectOfType<DialogueManager>().DisplayNextDialogueLine;
         #if UNITY_EDITOR
         inputs.Gameplay.SaveGame.performed += FindObjectOfType<SaveStateManager>().SaveState;
         inputs.Gameplay.LoadGame.performed += FindObjectOfType<SaveStateManager>().LoadState;
         #endif
+    }
+
+    public void MenuTime()
+    {
+        inputs.Gameplay.Disable();
+        inputs.Menu.Enable();
+    }
+
+    public void GameTime()
+    {
+        inputs.Menu.Disable();
+        inputs.Gameplay.Enable();
     }
 
     private void OnEnable() => inputs.Enable();

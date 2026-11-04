@@ -1,0 +1,7 @@
+- [ ] Need to be able to interact with dialogue UI when time is frozen
+	- [ ]  Nothing actually calls `DisplayNextDialogueLine()` to play the next button
+		- [x] Should ideally be called by the **A/Enter** button in the InputManager
+		- [x] Should probably deactivate the Gameplay Inputs and activate the Menu inputs
+			- [ ] Should definitely check to make sure that controllers can scroll through the menu
+	- [ ] Why do I need to hold the button to make things work?
+		- [ ] Can I lower the release time needed for this to lock in?

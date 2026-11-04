@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int waves = 0;
 
     [Header("Managed scripts")]
-    [SerializeField] AudioManager audioManager;
+    //[SerializeField] AudioManager audioManager;
     [SerializeField] AudioClip[] songs;
     [SerializeField] HealthManager health;
 
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        //audioManager = FindObjectOfType<AudioManager>();
         health = GetComponent<HealthManager>();
         waves = 0;
         possibleItemsToDrop = inspectorArray;

@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-public class CSVReader
+public class CSVReader: MonoBehaviour
 {
     // flag for processing a CSV
     private enum ParsingMode { None /*default*/, OutQuote, /*processing a character which is out of quotes*/
@@ -16,7 +16,8 @@ public class CSVReader
         //Ideally, Application.dataPath should work for all devices
             //After all, kinda want to keep the lore folder close to my game
             //Accessible next to my Assets folder in the Editor and next to my executable in release
-        string foundFile = Directory.GetParent(Application.dataPath).ToString() + new string($"\\Lore\\{csvFileName}");
+            //Should probably use if UNITY_EDITOR as this could be different in the actual build
+        string foundFile = Directory.GetParent(Application.dataPath).ToString() + new string($"/Assets/Lore/{csvFileName}");
         string src = File.ReadAllText(@foundFile); //should probably find a way to either insert filename in directory text or search for it
         var rows = new List<List<string>>();
         var cols = new List<string>();

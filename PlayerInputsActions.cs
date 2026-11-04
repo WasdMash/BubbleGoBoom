@@ -462,7 +462,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""id"": ""5c5bbafe-8aee-4801-a2a6-479520dc90c7"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {

@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using Unity.Burst.CompilerServices;
+using UnityEditor.Callbacks;
+using UnityEngine.Analytics;
 
 public class Inventory : MonoBehaviour, IItemContainer
 {
@@ -17,19 +20,37 @@ public class Inventory : MonoBehaviour, IItemContainer
     [SerializeField] float downShift; //value which detemrines how far out of view the inventory slides out of the 
     [Range(0f, 1f)]
     [SerializeField] float downShiftTime; //how long it takes for the UI to move out of the way
+    [Range(50f,500f)]
+    [SerializeField] float mouseThreshold = 10f;
+    private bool isHidden;
+    private float cameraCentre;
+
     public void Awake()
     {
         info = new InventoryInfo();
         originalPos = transform.position;
         inventoryGraphics = GetComponentsInChildren<InventorySlot>();
         RefreshUI();
+        cameraCentre = Screen.height / 2f;
     }
 
     //Quick fix to get the UI out ot the way when aiming downwards, especially on controller
     void Update()
     {
-        if(InputManager.Instance.LookInput.magnitude > 0.9f) transform.DOMove(originalPos - new Vector3(0f,downShift,0f), downShiftTime);
-        else if (transform.position != originalPos) transform.DOMove(originalPos, downShiftTime);
+        float look = InputManager.Instance.LookInput.y;
+        bool likelyMouse = Mathf.Abs(look) > 1.5f;
+        float magnitude = likelyMouse ? Mathf.Abs(look - cameraCentre) : Mathf.Abs(look);
+        float threshold = likelyMouse ? mouseThreshold : 0.9f;
+        bool shouldHide = magnitude > threshold;
+
+        if (shouldHide == isHidden) return;
+        //Should do a check for mouse to return if difference from centre also meets a threshold
+
+        isHidden = shouldHide;
+        transform.DOKill();
+
+        Vector3 target = isHidden ? originalPos - new Vector3(0f, downShift, 0f) : originalPos;
+        transform.DOMove(target, downShiftTime);
         
     }
     public LootableItem GetItem(int index)

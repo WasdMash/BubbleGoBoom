@@ -80,11 +80,11 @@ public class Gun : MonoBehaviour {
         if(hit && hit.collider.name != "Player"){
             //Checks if the ray hit something
             //Calculate direction from place of attack to targetpoint
-            Vector3 targetPoint = new Vector3(hit.point.x, hit.point.y, 0f);
-            Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
+            //Vector3 targetPoint = new Vector3(hit.point.x, hit.point.y, 0f);
+            //Vector3 directionWithoutSpread = targetPoint - attackPoint.position;
             
             //Instantiate the bullet to be shot
-            GameObject curbullet = Instantiate(bullet, attackPoint.position - 0.2f*attackPoint.transform.up, Quaternion.identity) as GameObject;
+            GameObject curbullet = Instantiate(bullet, attackPoint.position - 0.2f*attackPoint.transform.up, Quaternion.identity);
             
             //Actually shoots the object
 			curbullet.GetComponent<Bullet>().targetEnemyMask = enemyMask;

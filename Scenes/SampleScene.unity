@@ -1251,15 +1251,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1aeda59908feed94a9393bb19d81cd47, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 1aeda59908feed94a9393bb19d81cd47, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 27ed1d1dba3f18e428a68b3690af4cdf, type: 2}
+  m_sharedMaterial: {fileID: -1555427690013903431, guid: 27ed1d1dba3f18e428a68b3690af4cdf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281288753
+  m_fontColor: {r: 0.19114347, g: 0.2830189, b: 0.18556428, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 19.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1379,15 +1379,15 @@ MonoBehaviour:
     need to find a way to make this text not blurry but in fact, sharper and easier
     to read fr.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1aeda59908feed94a9393bb19d81cd47, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 1aeda59908feed94a9393bb19d81cd47, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f2b1abdeec4518e4f9e2524375b17c67, type: 2}
+  m_sharedMaterial: {fileID: 1962143475819423707, guid: f2b1abdeec4518e4f9e2524375b17c67, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1404,13 +1404,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
+  m_fontSize: 13.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 5
   m_fontSizeMax: 40
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -6253,12 +6253,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2276631b3a217843b26c7b3411c416f, type: 3}
   - {fileID: 21300000, guid: e8fdc5a955944d94a87e26bd7aaa39dd, type: 3}
   - {fileID: 21300000, guid: 044a1218e2b91484888e18f23c933972, type: 3}
-  characterIcon: {fileID: 1898215514}
+  cSVReader: {fileID: 1275037506}
+  characterIcon: {fileID: 819041639}
   characterName: {fileID: 282706647}
   dialogueArea: {fileID: 283691166}
   isDialogueActive: 0
-  typingSpeed: 0.2
-  animator: {fileID: 1275037506}
+  typingSpeed: 50
+  animator: {fileID: 2080915476}
+  dialogueUI: {fileID: 2080915474}
 --- !u!4 &1275037505
 Transform:
   m_ObjectHideFlags: 0
@@ -6274,27 +6276,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1275037506
-Animator:
-  serializedVersion: 5
+--- !u!114 &1275037506
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275037503}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7b6199cee985b6243806ab50a57ed398, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbc117fa48e6b7baca1f0f8a8196d59e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1290321492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6429,7 +6422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    dialogueFileName: 
+    dialogueFileName: EnterBossRoom.csv
 --- !u!4 &1323042335
 Transform:
   m_ObjectHideFlags: 0
@@ -12765,6 +12758,7 @@ MonoBehaviour:
   nullSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
   downShift: 200
   downShiftTime: 0.213
+  mouseThreshold: 135
 --- !u!114 &1599745194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13441,7 +13435,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 282706645}
   m_Father: {fileID: 2080915475}
@@ -14669,13 +14663,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2080915475}
+  - component: {fileID: 2080915476}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2080915475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14698,6 +14693,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!95 &2080915476
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080915474}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f73c5f04633c0d3319a998a0947f1e2e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &370739161987103786
 GameObject:
   m_ObjectHideFlags: 0
@@ -15158,7 +15174,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 548a1f136fb6ac54cb96b63a09fd6299, type: 2}
   gameScore: 0
   waves: 0
-  audioManager: {fileID: 193260022}
   songs:
   - {fileID: 8300000, guid: e4b3396569cf12d42a38193012c1b3c1, type: 3}
   - {fileID: 8300000, guid: d46de2f4306ffc54caf5ba21b445a6d6, type: 3}
