@@ -10,3 +10,12 @@
 	- A proper chest system to save and store items will be most necessary for it
 	
 ## **all of them are pick-uppable and swappable from the floor**
+
+<h1>Lootable item list by ids</h1>
+
+1. 0 - Gun
+2. 1 - MeleeMop
+3. 2 - SanisiterShotgun
+4. 3 - Soap
+5. 4 - BabyOil
+6. 5 - HandSanitiser

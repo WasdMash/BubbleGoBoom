@@ -144,6 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6b6a9078389fb4192b97a030790a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: 4
+  itemName: BabyOil
+  anim: {fileID: 0}
+  itemSprite: {fileID: 0}
+  particles: {fileID: 0}
   speedDuration: 10
   timer: 0
   speedIncrease: 1.3

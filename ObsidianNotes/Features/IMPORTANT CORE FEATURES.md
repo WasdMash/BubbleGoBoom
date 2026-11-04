@@ -1,10 +1,5 @@
 Programming
-- Movement
-- Collisions - walls
-- Placeholder enemies
-- Combat?
 - Map generation, rooms, connected
-	- Where the door is at so you know where to continue generation
 	- Spawnpoints
 
 Art
@@ -15,10 +10,6 @@ Art
 
 Sound
 - Music
-	- Main Menu / Intermission / Lobby
-	- Level 1
-		- Theme
-		- Boss
 	- Level 2
 		- Theme
 		- Boss
@@ -32,4 +23,5 @@ Sound
 
 Goals
 - Main menu
-- 
+- Options menu
+	- Sensitivity, volume, accessibility and all that jazz 

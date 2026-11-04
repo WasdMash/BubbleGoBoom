@@ -1,9 +1,18 @@
 
+- [ ] Dialogue Triggers
+	- [ ] Could add a simple *boolean* to turn off triggers after `EndDialogue()` so that they do not keep triggering - **especially helpful after key story points which don't need to be re-iterated**
+		- [ ] This too would need to be added to my save system
+- [ ] Spawnpoints
+	- [ ] Perhaps it would be mean to make the user start from the very beginning
+		- [ ] Should be easy to integrate alongside my save system - just locate their last room completed and load them in the middle of it
+- [ ] **Weapons in general**
+	- [ ] I have no idea how they work - I'm looking at the Scriptable Objects I made for them ages ago and have no idea how to instantiate them as physical objects that my player can add to inventory and interact with
+	- [ ] Uhh, ScriptableObjects are only really built to store data, so I have no clue why I've written all of my consumables and weapons in the form of scriptable objects
 - [ ] **Active weapon slot**
 	- [ ] How to actually store it and bind its actions to a button shouldn't be hard to figure out?
 - [ ] Actually creating a choice of weapons and consumables
-	- [ ] ![[Buffs]]
-	- [ ] ![[Item slots]]
+	- [ ] ![[Buffs#Consumables]]
+	- [ ] ![[Item slots#**3 Consumable Slots**]]
 - [ ] **Locking the player in a room whenever a boss is active and alive**
 	- [ ] Tracking the boss' health and opening the triggers to doors when their health is 0
 - [ ] **Implementing save states in the game**

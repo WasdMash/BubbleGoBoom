@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
-using Unity.Burst.CompilerServices;
-using UnityEditor.Callbacks;
-using UnityEngine.Analytics;
 
 public class Inventory : MonoBehaviour, IItemContainer
 {
@@ -37,6 +34,9 @@ public class Inventory : MonoBehaviour, IItemContainer
     //Quick fix to get the UI out ot the way when aiming downwards, especially on controller
     void Update()
     {
+        //Can be annoying, especially when we want to be dragging something down into inventory
+            //Perhaps add a key to hold while looking down to activate this drag
+                //LeftShift for mouse+keyboard should do the trick
         float look = InputManager.Instance.LookInput.y;
         bool likelyMouse = Mathf.Abs(look) > 1.5f;
         float magnitude = likelyMouse ? Mathf.Abs(look - cameraCentre) : Mathf.Abs(look);

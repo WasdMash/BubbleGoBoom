@@ -6,8 +6,7 @@ using System;
     //Finna make my life so much easier in the long run
 
 //If I remember correctly, as long as each interface is implemented, I can have as many as I want - yippee!
-[CreateAssetMenu(fileName = "LootableItem", menuName = "Lootables/LootableItem")]
-public class LootableItem : ScriptableObject, IComparable<LootableItem>
+public class LootableItem : MonoBehaviour, IComparable<LootableItem>
 {
     [Header("Item properties")]
     [SerializeField] protected string itemId;

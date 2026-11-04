@@ -5,3 +5,5 @@
 			- [ ] Should definitely check to make sure that controllers can scroll through the menu
 	- [ ] Why do I need to hold the button to make things work?
 		- [ ] Can I lower the release time needed for this to lock in?
+- [ ] Due to new camera feature, **attempting to drag resources from the chest into inventory slots will no longer work**
+	- [ ] May instead need to operate hotkeys and a *click to fill earliest empty slot in inventory* type system, similar to Minecraft

@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SpeedBuff : MonoBehaviour
+public class SpeedBuff : LootableItem
 {
     [SerializeField] float speedDuration = 10f;
     [SerializeField] float timer =0f;

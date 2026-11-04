@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class HealthBuff : MonoBehaviour
+public class HealthBuff : LootableItem
 {
     [SerializeField] HealthManager healthManager;
     [SerializeField] int healAmount = 10;

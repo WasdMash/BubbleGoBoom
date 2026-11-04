@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     [Range(5f, 100f)]
     [SerializeField] float typingSpeed = 0.2f;
     public Animator animator;
-    [SerializeField] GameObject dialogueUI;
+    [SerializeField] GameObject dialogueUI, gameplayUI;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowUI() { 
         dialogueUI.SetActive(true);
+        gameplayUI.SetActive(false); //We don't need that pesky gun UI and stuff in the way
         animator.Play("Base Layer.show", 0, 0f);}
     public void HideUI() => animator.Play("Base Layer.hide", 0, 0f);
 
@@ -102,6 +103,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         HideUI();
+        gameplayUI.SetActive(true);
         InputManager.Instance.GameTime();
         Time.timeScale = 1f; //undoes the time freezing - don't want enemies moving when you can't
     }

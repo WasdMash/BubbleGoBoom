@@ -144,6 +144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb36160cfcb7ca47bac82df8c9ff414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: 3
+  itemName: Soap
+  anim: {fileID: 0}
+  itemSprite: {fileID: 0}
+  particles: {fileID: 0}
   healthManager: {fileID: 0}
   healAmount: 10
 --- !u!95 &190013636819326251

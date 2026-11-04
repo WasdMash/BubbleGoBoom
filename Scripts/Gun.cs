@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using System.Collections;
 using UnityEngine.UI;
 
-public class Gun : MonoBehaviour {
+public class Gun : LootableItem{
 	
 	//The bullet and its movement forces
 	[SerializeField] LayerMask enemyMask;
@@ -11,7 +9,7 @@ public class Gun : MonoBehaviour {
 	[SerializeField] AudioClip bangClip;
 	public GameObject bullet;
 	[SerializeField] int bulletDamage;
-	[SerializeField] float shootForce, upwardForce;
+	[SerializeField] float shootForce;
 	
 	//Gun stats
 	[SerializeField] float TimeBetweenShots,TimeBetweenShooting, spread, reloadtime;
@@ -24,18 +22,11 @@ public class Gun : MonoBehaviour {
 	
 	[SerializeField]
 	bool shooting, readyToShoot, reloading, BulletsLeftAreGreaterThanZero;
-	[SerializeField] Vector2 lookInput;
-	
 	[SerializeField] Transform attackPoint;
 	
-	//Graphics and visual effects
-	public GameObject muzzleFlash;
 	//public Animator GunAnimator //Might use if I want to play animations when firing and reloading
 	public Text bulletUIText;
 	public GameObject gunUI;
-	[SerializeField] Transform playerTransform;
-	[SerializeField] [Range(0f,3f)] float armRadius, rotationSpeed;
-	
 	//This is used to fix bugs, which I will defintely need
 	public bool allowInvoke;
 	
