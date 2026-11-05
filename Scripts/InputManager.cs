@@ -38,7 +38,8 @@ public class InputManager : MonoBehaviour
             lastDevice = ctx.control.device is Gamepad ? AimDevice.Gamepad : AimDevice.Mouse;
             OnLookPerformed?.Invoke(ctx);
         };
-        inputs.Gameplay.EquipItem.performed += FindObjectOfType<Inventory>().useEquippedItem;
+        inputs.Gameplay.UseItem.performed += FindObjectOfType<Inventory>().useEquippedItem;
+        inputs.Gameplay.EquipItem.performed += FindObjectOfType<Inventory>().EquipItem;
 
         //Will also need to bind menu actions here as well
         inputs.Menu.Select.performed += FindObjectOfType<DialogueManager>().DisplayNextDialogueLine;

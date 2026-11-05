@@ -9,7 +9,10 @@ public class Weapon : LootableItem
     [SerializeField] protected int maxDurability;
     [SerializeField] protected int durability; //This durability can be altered on instances when it is used over time
     protected float nextAttackTime;
-    public override void useItem() => Debug.Log(itemName + " is doing damage, baby!");
+    public override void useItem()
+    {
+        Debug.Log(itemName + " is doing damage, baby!");
+    } 
     //Could be an issue if loading a half-used weapon after a save
     public void Awake() => durability = maxDurability; //Gotta set durability to max when starting the game for the first time
     //Bruh, just saw a Code Monkey article adviising me not to use Scriptable Objects to store changing variables

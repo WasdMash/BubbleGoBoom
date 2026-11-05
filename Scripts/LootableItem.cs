@@ -44,6 +44,8 @@ public class LootableItem : MonoBehaviour, IComparable<LootableItem>
     public virtual void useItem()
     {
         Debug.Log(itemName + " has just been used");
+        //Uhh, should probably instantiate a version of the gameObject, lol
+            //Let's start by getting the transform of the gun and spawning there as a rough start
     }
 
     //The stuff which should happen when this particle gets picked up

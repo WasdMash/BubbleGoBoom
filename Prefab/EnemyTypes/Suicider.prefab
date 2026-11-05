@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5956586667584406025}
   - component: {fileID: 734374794459249763}
   - component: {fileID: 8205043927394898431}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Suicider
   m_TagString: Enemy
   m_Icon: {fileID: 0}

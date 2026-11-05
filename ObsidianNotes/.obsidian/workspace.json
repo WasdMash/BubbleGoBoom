@@ -49,8 +49,7 @@
               "title": "Item slots"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "912e86e34b454bf4",
@@ -216,12 +215,12 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "4b343499385e645b",
+  "active": "2d69f3b5ef18115d",
   "lastOpenFiles": [
-    "Features/IMPORTANT CORE FEATURES.md",
-    "Features/Item slots.md",
-    "Features/Save state handling.md",
     "Features/Things to work on.md",
+    "Features/Item slots.md",
+    "Features/IMPORTANT CORE FEATURES.md",
+    "Features/Save state handling.md",
     "Features/Inventory system planning.md",
     "Features/Bugs.md",
     "Features/Buffs.md",

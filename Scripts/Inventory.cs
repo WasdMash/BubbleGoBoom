@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour, IItemContainer
     protected InventoryInfo info;
     public LootableItem equippedItem; //We probably only want our user to have one item at a time to add to the chaos
     //It should probably be made a child of the player
+    private int lastUsedItem = 0; //Kinda need this for equipItem in InputManager to have no arguments
 
     [Header("Graphics")]
     [SerializeField] InventorySlot equippedItemSprite; //So we can visually show what the equipped item is at any given time
@@ -38,7 +39,7 @@ public class Inventory : MonoBehaviour, IItemContainer
     {
         //Can be annoying, especially when we want to be dragging something down into inventory
             //Perhaps add a key to hold while looking down to activate this drag
-                //LeftShift for mouse+keyboard should do the trick
+        if(Input.GetKey(KeyCode.LeftShift)) return; //LeftShift for mouse+keyboard should do the trick
         float look = InputManager.Instance.LookInput.y;
         bool likelyMouse = Mathf.Abs(look) > 1.5f;
         float magnitude = likelyMouse ? Mathf.Abs(look - cameraCentre) : Mathf.Abs(look);
@@ -93,14 +94,16 @@ public class Inventory : MonoBehaviour, IItemContainer
                 //First check if a copy of the item exists - if so, stack it
                 if(info.inventoryItems[index] is not Weapon) info.inventoryStacks[index]++; //Only if pickUpItem is not a weapon
             }
+            lastUsedItem = index; //Cool, the latest thing to be set to be equipped
         } 
         else info.inventoryItems[index] = null;
         RefreshUI();
     }
 
     //Should perhaps trigger the selected function of UI to visually show equipped item
-    public void EquipItem(int itemIndex){ 
-        equippedItem = info.inventoryItems[itemIndex];
+    public void EquipItem(InputAction.CallbackContext context) => EquipItem();
+    public void EquipItem(){ 
+        equippedItem = info.inventoryItems[lastUsedItem]; //By default, just assumes that you want to equip the last moved item.
         equippedItemSprite.Setup(0, equippedItem, this); //This could be more cumbersome, but hey, let's find out,
     }
 

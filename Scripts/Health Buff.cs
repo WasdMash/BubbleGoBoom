@@ -13,4 +13,13 @@ public class HealthBuff : LootableItem
             Destroy(gameObject);
         }
     }
+
+    //Also forgot to override here as well
+    public override void useItem()
+    {
+        base.useItem();
+        healthManager = FindObjectOfType<HealthManager>().GetComponent<HealthManager>();
+        healthManager.HealPlayer(healAmount);
+        Destroy(gameObject);
+    }
 }

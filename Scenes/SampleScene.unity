@@ -6525,7 +6525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     dialogueFileName: EnterBossRoom.csv
-    oneTimeTrigger: 0
+    oneTimeTrigger: 1
 --- !u!4 &1323042335
 Transform:
   m_ObjectHideFlags: 0

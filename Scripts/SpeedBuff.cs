@@ -20,6 +20,15 @@ public class SpeedBuff : LootableItem
             GetComponent<Transform>().position = new Vector3(0,1000,0);
             }
     }
+    //Lol, forgot to override useItem to actually give this item its usage
+    public override void useItem()
+    {
+        base.useItem();
+        var player = FindObjectOfType<PlayerMovement>();
+        if(player.playerSpeed < maxSpeed) player.playerSpeed *= speedIncrease;
+        GetComponent<Transform>().position = new Vector3(0,1000,0);
+        //Should probably remove it from the UI at this stage now
+    }
 
     void Update(){
         if (picked_up){

@@ -106,7 +106,7 @@ MonoBehaviour:
   particles: {fileID: 0}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   bangSound: {fileID: 498195911309941870}
   bangClip: {fileID: 8300000, guid: a9baf7d98d2d36d44858f307b70121bb, type: 3}
   bullet: {fileID: 6017484412182822554, guid: f3edfe317cf0bcf43a1d761130280eca, type: 3}
