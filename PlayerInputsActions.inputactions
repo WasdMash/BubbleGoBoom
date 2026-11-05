@@ -380,6 +380,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CursorMove",
+                    "type": "Value",
+                    "id": "bb70ea7c-2174-43f5-bf85-f4ac2ba6a800",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Deselect",
                     "type": "Button",
                     "id": "26706681-0457-4ea9-8f17-8b8ab87c062a",
@@ -414,6 +423,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Scroll",
+                    "type": "Button",
+                    "id": "58b6717c-f598-418a-9415-82f275b5f90b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -441,6 +459,28 @@
                 },
                 {
                     "name": "",
+                    "id": "e2bcfa3b-6880-421d-869c-6f6ec0d25d91",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f018aaac-3d4f-4d0d-bd6e-82f3023712e8",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CursorMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "af323d61-17c3-414b-bc30-00b1489364d0",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -451,37 +491,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "One Modifier",
-                    "id": "d438a0aa-4691-46cd-83c7-84d240a084a8",
-                    "path": "OneModifier",
+                    "name": "",
+                    "id": "17b93fcd-49fd-4e7f-bc45-f2dba1b62a8a",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Deselect",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "305287a6-98b3-4037-9801-194f5d50bbea",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Deselect",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "50618323-cc80-46dc-aef8-2ce5bfa9c5dc",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Deselect",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -497,7 +515,7 @@
                 {
                     "name": "",
                     "id": "759ea0d5-01d4-4324-a833-81361265cd3b",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -519,7 +537,7 @@
                 {
                     "name": "",
                     "id": "e93c41f7-9e2f-4b57-a9eb-ff444cf776b8",
-                    "path": "<Gamepad>/buttonNorth",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -590,6 +608,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "2160978a-5f68-4615-8040-881b93b1ac8a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "aeb09800-f140-43b6-b0da-2265367f37aa",
+                    "path": "<VirtualMouse>/scroll/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a4d1d85e-cee8-4568-8ee7-4058a47a3287",
+                    "path": "<Mouse>/scroll/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

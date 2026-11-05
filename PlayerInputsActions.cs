@@ -466,6 +466,15 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""CursorMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""bb70ea7c-2174-43f5-bf85-f4ac2ba6a800"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Deselect"",
                     ""type"": ""Button"",
                     ""id"": ""26706681-0457-4ea9-8f17-8b8ab87c062a"",
@@ -500,6 +509,15 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""Button"",
+                    ""id"": ""58b6717c-f598-418a-9415-82f275b5f90b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -527,6 +545,28 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""e2bcfa3b-6880-421d-869c-6f6ec0d25d91"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CursorMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f018aaac-3d4f-4d0d-bd6e-82f3023712e8"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CursorMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""af323d61-17c3-414b-bc30-00b1489364d0"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -537,37 +577,15 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""d438a0aa-4691-46cd-83c7-84d240a084a8"",
-                    ""path"": ""OneModifier"",
+                    ""name"": """",
+                    ""id"": ""17b93fcd-49fd-4e7f-bc45-f2dba1b62a8a"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Deselect"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""305287a6-98b3-4037-9801-194f5d50bbea"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Deselect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""50618323-cc80-46dc-aef8-2ce5bfa9c5dc"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Deselect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -583,7 +601,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""759ea0d5-01d4-4324-a833-81361265cd3b"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -605,7 +623,7 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e93c41f7-9e2f-4b57-a9eb-ff444cf776b8"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -678,6 +696,39 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""2160978a-5f68-4615-8040-881b93b1ac8a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""aeb09800-f140-43b6-b0da-2265367f37aa"",
+                    ""path"": ""<VirtualMouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a4d1d85e-cee8-4568-8ee7-4058a47a3287"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -698,10 +749,12 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Select = m_Menu.FindAction("Select", throwIfNotFound: true);
+        m_Menu_CursorMove = m_Menu.FindAction("CursorMove", throwIfNotFound: true);
         m_Menu_Deselect = m_Menu.FindAction("Deselect", throwIfNotFound: true);
         m_Menu_EquipItem = m_Menu.FindAction("EquipItem", throwIfNotFound: true);
         m_Menu_Menu = m_Menu.FindAction("Menu", throwIfNotFound: true);
         m_Menu_Move = m_Menu.FindAction("Move", throwIfNotFound: true);
+        m_Menu_Scroll = m_Menu.FindAction("Scroll", throwIfNotFound: true);
     }
 
     ~@PlayerInputsActions()
@@ -968,10 +1021,12 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Menu;
     private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
     private readonly InputAction m_Menu_Select;
+    private readonly InputAction m_Menu_CursorMove;
     private readonly InputAction m_Menu_Deselect;
     private readonly InputAction m_Menu_EquipItem;
     private readonly InputAction m_Menu_Menu;
     private readonly InputAction m_Menu_Move;
+    private readonly InputAction m_Menu_Scroll;
     /// <summary>
     /// Provides access to input actions defined in input action map "Menu".
     /// </summary>
@@ -988,6 +1043,10 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Select => m_Wrapper.m_Menu_Select;
         /// <summary>
+        /// Provides access to the underlying input action "Menu/CursorMove".
+        /// </summary>
+        public InputAction @CursorMove => m_Wrapper.m_Menu_CursorMove;
+        /// <summary>
         /// Provides access to the underlying input action "Menu/Deselect".
         /// </summary>
         public InputAction @Deselect => m_Wrapper.m_Menu_Deselect;
@@ -1003,6 +1062,10 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Menu/Move".
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Menu_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Menu/Scroll".
+        /// </summary>
+        public InputAction @Scroll => m_Wrapper.m_Menu_Scroll;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1032,6 +1095,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
+            @CursorMove.started += instance.OnCursorMove;
+            @CursorMove.performed += instance.OnCursorMove;
+            @CursorMove.canceled += instance.OnCursorMove;
             @Deselect.started += instance.OnDeselect;
             @Deselect.performed += instance.OnDeselect;
             @Deselect.canceled += instance.OnDeselect;
@@ -1044,6 +1110,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Scroll.started += instance.OnScroll;
+            @Scroll.performed += instance.OnScroll;
+            @Scroll.canceled += instance.OnScroll;
         }
 
         /// <summary>
@@ -1058,6 +1127,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
+            @CursorMove.started -= instance.OnCursorMove;
+            @CursorMove.performed -= instance.OnCursorMove;
+            @CursorMove.canceled -= instance.OnCursorMove;
             @Deselect.started -= instance.OnDeselect;
             @Deselect.performed -= instance.OnDeselect;
             @Deselect.canceled -= instance.OnDeselect;
@@ -1070,6 +1142,9 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Scroll.started -= instance.OnScroll;
+            @Scroll.performed -= instance.OnScroll;
+            @Scroll.canceled -= instance.OnScroll;
         }
 
         /// <summary>
@@ -1189,6 +1264,13 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSelect(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "CursorMove" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCursorMove(InputAction.CallbackContext context);
+        /// <summary>
         /// Method invoked when associated input action "Deselect" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1216,5 +1298,12 @@ public partial class @PlayerInputsActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Scroll" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnScroll(InputAction.CallbackContext context);
     }
 }
