@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1855766395309890568}
   - component: {fileID: 631677547800043297}
   - component: {fileID: -205058825078086994}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mitosis
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2293444935935476198}
   - component: {fileID: 1321306975021836137}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Tank_creperslime
   m_TagString: Untagged
   m_Icon: {fileID: 0}

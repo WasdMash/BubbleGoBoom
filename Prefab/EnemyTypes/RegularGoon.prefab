@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7084527605147305939}
   - component: {fileID: -5747305476674646361}
   - component: {fileID: -1007883840293958986}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RegularGoon
   m_TagString: Enemy
   m_Icon: {fileID: 0}

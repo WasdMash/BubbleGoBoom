@@ -50,7 +50,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       },
       {
         "id": "912e86e34b454bf4",
@@ -216,13 +216,13 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0134eb6a9478b93c",
+  "active": "4b343499385e645b",
   "lastOpenFiles": [
+    "Features/IMPORTANT CORE FEATURES.md",
     "Features/Item slots.md",
     "Features/Save state handling.md",
     "Features/Things to work on.md",
     "Features/Inventory system planning.md",
-    "Features/IMPORTANT CORE FEATURES.md",
     "Features/Bugs.md",
     "Features/Buffs.md",
     "Features/Ideas.md",

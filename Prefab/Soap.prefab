@@ -147,7 +147,7 @@ MonoBehaviour:
   itemId: 3
   itemName: Soap
   anim: {fileID: 0}
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: db7827fbdf421a24c9114b7450e9e585, type: 3}
   particles: {fileID: 0}
   healthManager: {fileID: 0}
   healAmount: 10

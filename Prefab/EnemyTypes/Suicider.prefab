@@ -164,6 +164,13 @@ MonoBehaviour:
   pickUpRates:
   - 0.4
   - 1
+  enemyStats:
+    health: 0
+    enemyID: 0
+    position:
+    - 0
+    - 0
+    - 0
 --- !u!82 &8205043927394898431
 AudioSource:
   m_ObjectHideFlags: 0

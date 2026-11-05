@@ -15,6 +15,7 @@ public class MeleeWeapon : Weapon
         if (Time.time < nextAttackTime || durability <= 0) return;
         nextAttackTime = Time.time + attackCooldown;
         //Make an attacking motion and show necessary particles
+        if(anim != null) anim.Play();
             //Give it a collider or raycast within attacking range
             //Do set damage if we hit anything
         Collider2D[] hits = Physics2D.OverlapCircleAll(

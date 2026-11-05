@@ -29,7 +29,12 @@ public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         //Chests decided to be extra annoying and not work like main inventory, despite having basically the same code
         if (itemIcon == null) itemIcon = transform.Find("SpriteBackground").GetComponent<Image>();
-        if(item == null) itemIcon.enabled = false;
+        if(item == null)
+        {
+            itemIcon.enabled = false;
+            Debug.Log("This item is still null, meaning that the info got wiped");
+        }
+       
         
     }
 

@@ -5,12 +5,15 @@ using DG.Tweening;
 public class Inventory : MonoBehaviour, IItemContainer
 {
     [Header("Items")]
+    [SerializeField]
     protected InventoryInfo info;
     public LootableItem equippedItem; //We probably only want our user to have one item at a time to add to the chaos
+    //It should probably be made a child of the player
 
     [Header("Graphics")]
-    public InventorySlot[] inventoryGraphics = new InventorySlot[4];//default placeholder for now
-    public Sprite nullSprite; //This is the placeholder sprite for each inventory slot, just to prevent errors
+    [SerializeField] InventorySlot equippedItemSprite; //So we can visually show what the equipped item is at any given time
+    [SerializeField] InventorySlot[] inventoryGraphics = new InventorySlot[4];//default placeholder for now
+    [SerializeField] Sprite nullSprite; //This is the placeholder sprite for each inventory slot, just to prevent errors
     //I want a visual Minecraft-like box to show current inventory
     Vector3 originalPos;
     [Range(0f, 200f)]
@@ -24,7 +27,6 @@ public class Inventory : MonoBehaviour, IItemContainer
 
     public void Awake()
     {
-        info = new InventoryInfo();
         originalPos = transform.position;
         inventoryGraphics = GetComponentsInChildren<InventorySlot>();
         RefreshUI();
@@ -97,24 +99,9 @@ public class Inventory : MonoBehaviour, IItemContainer
     }
 
     //Should perhaps trigger the selected function of UI to visually show equipped item
-    public void EquipItem(int itemIndex){ equippedItem = info.inventoryItems[itemIndex];}
-
-    //I don't really know what use cases they may be for this function as opposed to the copy constructor, but I'll keep it just in case
-    public void ReloadInventory(ref Inventory storedInventory)
-    {
-        equippedItem = storedInventory.equippedItem;
-        for(int i = 0; i < 4; i++)
-        {
-            //Only replace the items which aren't the same
-                //Ugh, I have to store the inventory stack also
-            if(info.inventoryItems[i].CompareTo(storedInventory.info.inventoryItems[i]) != 0)
-            {
-                info.inventoryItems[i] = storedInventory.info.inventoryItems[i];
-                //Handle that stack also
-                info.inventoryStacks[i] = storedInventory.info.inventoryStacks[i];
-            } 
-        }
-        RefreshUI();
+    public void EquipItem(int itemIndex){ 
+        equippedItem = info.inventoryItems[itemIndex];
+        equippedItemSprite.Setup(0, equippedItem, this); //This could be more cumbersome, but hey, let's find out,
     }
 
     public void DiscardItem(int itemIndex)
@@ -125,7 +112,7 @@ public class Inventory : MonoBehaviour, IItemContainer
             else
             {
                 info.inventoryItems[itemIndex] = null;//Remove this item this item to our inventory slot
-            info.storedItems--;
+                info.storedItems--;
             }           
         }
         else return; //If our inventory is empty, then we won't discard any more items

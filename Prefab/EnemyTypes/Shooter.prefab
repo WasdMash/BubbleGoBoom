@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4774947344338660884}
   - component: {fileID: -7236365851747392696}
   - component: {fileID: 5293760651528295266}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1751727630181912221}
   - component: {fileID: 8185401241447511450}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Pew_pew_pew_slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}

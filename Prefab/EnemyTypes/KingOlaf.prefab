@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1757098062676636121}
   - component: {fileID: 841855980172292522}
   - component: {fileID: 2637652376108074874}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: KingOlaf
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7706204260299709031}
   - component: {fileID: 1117330358213332964}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: KingOlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}

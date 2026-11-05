@@ -107,20 +107,15 @@ MonoBehaviour:
   rb: {fileID: 3946602376962081826}
   isDashing: 0
   dashPower: 0
-  dashCooldown: 0
+  dashCooldown: 1
   dashTimer: 0
-  projectileToAvoid:
-    serializedVersion: 2
-    m_Bits: 0
-  cursorDistance: 1
-  maxCursorDistance: 11.24
   screenPercentage: 0.4
-  newCameraTarget: {x: 0, y: 0, z: 0}
+  deadzone: 0
   cameraSpeed: 5
+  gamepadSpeed: 0
   main_Camera: {fileID: 8477653300302986102}
-  cameraWidth: 0
-  cameraHeight: 0
   offsetMultiplier: 10
+  virtualAimOffset: {x: 0, y: 0}
 --- !u!50 &3946602376962081826
 Rigidbody2D:
   serializedVersion: 4
@@ -466,15 +461,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c3383695eec0564aa52df7edfaa0f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: 0
+  itemName: Gun
+  anim: {fileID: 0}
+  itemSprite: {fileID: 0}
+  particles: {fileID: 0}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   bangSound: {fileID: 0}
   bangClip: {fileID: 0}
   bullet: {fileID: 6017484412182822554, guid: f3edfe317cf0bcf43a1d761130280eca, type: 3}
   bulletDamage: 10
   shootForce: 30
-  upwardForce: 0
   TimeBetweenShots: 0.1
   TimeBetweenShooting: 0.1
   spread: 0
@@ -489,12 +488,8 @@ MonoBehaviour:
   reloading: 0
   BulletsLeftAreGreaterThanZero: 0
   attackPoint: {fileID: 5090031725846132955}
-  muzzleFlash: {fileID: 0}
   bulletUIText: {fileID: 0}
   gunUI: {fileID: 0}
-  playerTransform: {fileID: 5939938121501875446}
-  armRadius: 0.06
-  rotationSpeed: 1.02
   allowInvoke: 1
 --- !u!1 &8664735586071306410
 GameObject:
