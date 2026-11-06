@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1582219349450311553}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: possibleWall
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8504571988452534840}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: possibleWall (1)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3992278780481875736}
   - component: {fileID: 6465993744126390205}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: extra Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8625305534737183728}
   - component: {fileID: 3082165910830451950}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: extra Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3825305035963784325}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: possibleWall (2)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033920054188570631, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2165011238839105283, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_RootOrder
@@ -593,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3985686299764270432, guid: 9f0dcd138a5337d47952262209cd5df4, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4569562520729137879, guid: 9f0dcd138a5337d47952262209cd5df4, type: 3}
       propertyPath: m_Size.y
@@ -679,7 +679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033920054188570631, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2165011238839105283, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_RootOrder
@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033920054188570631, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2165011238839105283, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_LocalPosition.x

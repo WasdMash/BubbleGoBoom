@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6091781556855722870}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: possibleWall (1)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3997287972392566479}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: possibleWall
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8627223541448747918}
   - component: {fileID: 67990579578078966}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: extra Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5738275470789622159}
   - component: {fileID: 7021724576634514853}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: extra Collider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5808515507074152007}
   - component: {fileID: 2303772771371812213}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: extra Collider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5028679124475418506}
   - component: {fileID: 2473089644285915116}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: extra Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1700709807968249291}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: possibleWall (2)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -636,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033920054188570631, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2165011238839105283, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_RootOrder
@@ -743,7 +743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033920054188570631, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2165011238839105283, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_RootOrder
@@ -860,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3985686299764270432, guid: 9f0dcd138a5337d47952262209cd5df4, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4569562520729137879, guid: 9f0dcd138a5337d47952262209cd5df4, type: 3}
       propertyPath: m_Size.y
@@ -942,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033920054188570631, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2165011238839105283, guid: f992eec50b5a9ec41bd8ee70e403190a, type: 3}
       propertyPath: m_LocalPosition.x
